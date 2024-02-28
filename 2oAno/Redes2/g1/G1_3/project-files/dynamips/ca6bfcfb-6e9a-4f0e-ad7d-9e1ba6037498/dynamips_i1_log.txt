@@ -1,0 +1,22 @@
+Feb 26 14:37:43.224 HYPERVISOR: Release 0.2.23-amd64/Linux (tag 2023010200)
+Feb 26 14:37:43.224 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50177.
+Feb 26 14:37:43.228 HYPERVISOR: exec_cmd: hypervisor version 
+Feb 26 14:37:43.229 HYPERVISOR: exec_cmd: hypervisor working_dir /home/guima/Desktop/Aulas/2oAno/Redes2/g1/G1_3/project-files/dynamips 
+Feb 26 14:37:43.229 GENERAL: working_dir=/home/guima/Desktop/Aulas/2oAno/Redes2/g1/G1_3/project-files/dynamips
+Feb 26 14:37:43.229 HYPERVISOR: exec_cmd: ethsw create Switch1 
+Feb 26 14:37:43.448 HYPERVISOR: exec_cmd: nio create_udp udp-5b4ab320-95a8-4e77-95ba-a89d21bc6f69 10001 127.0.0.1 10000 
+Feb 26 14:37:43.449 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-5b4ab320-95a8-4e77-95ba-a89d21bc6f69 
+Feb 26 14:37:43.465 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-5b4ab320-95a8-4e77-95ba-a89d21bc6f69 1 
+Feb 26 14:37:43.531 HYPERVISOR: exec_cmd: nio create_udp udp-74ffb6ae-b9ab-4669-8cf5-8b2a7a063bfe 10003 127.0.0.1 10002 
+Feb 26 14:37:43.531 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-74ffb6ae-b9ab-4669-8cf5-8b2a7a063bfe 
+Feb 26 14:37:43.545 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-74ffb6ae-b9ab-4669-8cf5-8b2a7a063bfe 2 
+Feb 26 14:37:43.610 HYPERVISOR: exec_cmd: nio create_udp udp-8ac4feb8-69ef-42bf-91fb-7f58083503e2 10005 127.0.0.1 10004 
+Feb 26 14:37:43.611 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-8ac4feb8-69ef-42bf-91fb-7f58083503e2 
+Feb 26 14:37:43.626 HYPERVISOR: exec_cmd: ethsw set_access_port Switch1 udp-8ac4feb8-69ef-42bf-91fb-7f58083503e2 3 
+Feb 26 14:37:43.681 HYPERVISOR: exec_cmd: nio create_udp udp-f3a95981-92bc-4fe5-a69b-681d2bf6e9f6 10006 127.0.0.1 10007 
+Feb 26 14:37:43.682 HYPERVISOR: exec_cmd: ethsw add_nio Switch1 udp-f3a95981-92bc-4fe5-a69b-681d2bf6e9f6 
+Feb 26 14:37:43.687 HYPERVISOR: exec_cmd: ethsw set_dot1q_port Switch1 udp-f3a95981-92bc-4fe5-a69b-681d2bf6e9f6 1 
+Feb 26 14:38:34.363 HYPERVISOR: exec_cmd: ethsw delete Switch1 
+Feb 26 14:38:34.438 HYPERVISOR: exec_cmd: hypervisor stop 
+Feb 26 14:38:34.802 HYPERVISOR: Stopped.
+Feb 26 14:38:34.802 GENERAL: reset done.

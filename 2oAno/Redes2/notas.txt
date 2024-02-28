@@ -1,0 +1,5 @@
+mail:	salvador@ua.pt
+
+
+sh ip int br			( importante para gns3 )	-> permite ver os status dos aparelhos
+	ex; problemas de deteçao de cabos, fazer shutdown na interface correspondente e no shutdown de seguida
