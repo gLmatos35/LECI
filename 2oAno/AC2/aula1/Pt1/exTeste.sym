@@ -1,9 +1,0 @@
-GAS LISTING exTeste.s 			page 1
-
-
-DEFINED SYMBOLS
-           exTeste.s:8      *ABS*:0000000000000008 PRINT_STR
-           exTeste.s:11     .data:0000000000000000 msg
-           exTeste.s:16     .text:0000000000000000 main
-
-NO UNDEFINED SYMBOLS
