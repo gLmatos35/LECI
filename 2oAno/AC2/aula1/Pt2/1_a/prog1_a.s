@@ -1,15 +1,15 @@
-# int main(void)
-# {
-#       char c;
-#       int cnt = 0;
-#       do
-#       {
-#             c = getChar();
-#             putChar( c );
-#             cnt++;
-#       } while( c != '\n' );
-#       printInt(cnt, 10);
-#       return 0;
+# int main(void) 
+# { 
+#     char c; 
+#     int cnt = 0; 
+#     do 
+#     { 
+#        c = getChar(); 
+#        putChar( c ); 
+#        cnt++; 
+#     } while( c != '\n' ); 
+#     printInt(cnt, 10); 
+#     return 0; 
 # }
 
         .equ getChar,2
@@ -20,31 +20,29 @@
 
         .text
         .globl main
-main:   addiu $sp,$sp,-8
+main:   addiu $sp,$sp,-12
         sw $ra,0($sp)
         sw $s0,4($sp)
+        sw $s1,8($sp)
 
-        li $s0,0                # cnt = 0;
-do:     li $v0,getChar          # do
-        syscall                 # c = getChar();
-        move $t0,$v0            # c
-        move $a0,$v0
-        addi $a0,$a0,1          # c + 1
+        li $s0,0        # cnt = 0
+do:     li $v0,getChar
+        syscall
+        move $s1,$v0    # c = getChar()
+        move $a0,$s1
         li $v0,putChar
-        syscall                 # putChar(c+1):
-        addi $s0,$s0,1          # cnt++;
+        syscall
+        addiu $s0,$s0,1 # cnt++
+while:  bne $s1,'\n',do
 
-while:  bne $a0,'\n',do         # while (c != '\n') {
-
-        move $a0,$s0            # cnt
+        move $a0,$s0
         li $a1,10
-        li $v0,printInt
-        syscall                 # printInt(cnt,10);
-        li $v0,0                # return 0;
+        li $v0,printInt     # printInt(cnt,10)
+        syscall
+        li $v0,0    # return 0     
 
         lw $ra,0($sp)
         lw $s0,4($sp)
-        addiu $sp,$sp,8
-
+        lw $s1,8($sp)
+        addiu $sp,$sp,12
         jr $ra
-
