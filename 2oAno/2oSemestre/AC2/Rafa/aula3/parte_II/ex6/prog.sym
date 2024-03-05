@@ -1,0 +1,20 @@
+GAS LISTING prog.s 			page 1
+
+
+DEFINED SYMBOLS
+              prog.s:2      *ABS*:000000000000000b READ_CORE_TIMER
+              prog.s:3      *ABS*:000000000000000c RESET_CORE_TIMER
+              prog.s:4      *ABS*:000000000000bf88 ADDR_BASE_HI
+              prog.s:5      *ABS*:0000000000006100 TRISE
+              prog.s:6      *ABS*:0000000000006040 TRISB
+              prog.s:7      *ABS*:0000000000006120 LATE
+              prog.s:8      *ABS*:0000000000006050 PORTB
+              prog.s:9      *ABS*:0000000000006120 PORTE
+              prog.s:17     .text:0000000000000000 main
+              prog.s:36     .text:0000000000000038 loop
+              prog.s:60     .text:000000000000005c wait
+              prog.s:68     .text:0000000000000084 eloop
+              prog.s:79     .text:000000000000009c delay
+              prog.s:83     .text:00000000000000b4 whil
+
+NO UNDEFINED SYMBOLS
