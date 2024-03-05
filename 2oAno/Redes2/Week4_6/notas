@@ -1,0 +1,107 @@
+dynamic routing:	
+	* Ao contrário do routing estático, no routing dinâmico, é o próprio router que anuncia que é para ele que devem ser enviados os pacotes.
+	
+	
+	
+	no ex1, na interface f1/0 do router 3:
+		devido a limitações do rip v1, vai aparecer no router (show run probably) como 192.168.3.0/24 <-- em vez de /25 (dunno why mas sao limitaçoes)
+		
+		
+	com o ripV1, como vemos na captura de pacotes, os pacotes sao enviados para o broadcast (255.255.255.255), enquanto que com o ripV2 ele vai enviar para outro (224.0.0.9), que é o multicast, que so vai ser enviado/recebido por router que estao a correr o protocolo rip
+	
+	O rip so permite métricas até 15, usa o 16 para informar que a rede foi abaixo
+	
+	Na tabela de encaminhamento (show route) apenas aparecem as rotas de menor custo, por isso é que é possivel definir as prioridades [mais na nota do ponto 1.8 do pdf desta aula]
+	Quando existem 2 ou mais caminhos com o mesmo custo, o router tenta dividir os pacotes de forma a enviar de maneira "igual" para cada caminho, não colocando cargas de banda tão altas em apenas um route.
+	
+	
+	
+	1.2.	(1>>)
+		Enquanto que no router 1 o que inserimos no configure terminal foi:
+	>> .. (config)# network 10.1.2.0
+	>> .. (config)# network 10.1.3.0
+	>> .. (config)# network 192.168.1.0
+		O que nos aparece ao fazermos show run na parte do rip é o seguinte:
+	router rip
+ 	version 1
+ 	network 10.0.0.0		#R:# OS DOIS 10.1. .. MERGIRAM NA REDE MAIOR 
+ 	network 192.168.1.0
+
+		(2>>)
+		Os /32 são as próprias interfaces
+		As rotas para os /24 sao simplificadas para .. .0
+		no caso do router 3 temos aquele cenário falado em cima em que o /25 vira um /24
+		Ele agrupa nas subredes maiores (?)
+		
+		(3>>) acima
+		
+		(4>>) Os routers definem as máscaras das subredes conforme a máscara dos pacotes recebidos por ripV1
+	
+	
+	
+	1.3.	(1>>)
+		(comparar as periodicidades dos routers correspondentes, nao todos os pacotes uns com os outros ofc)
+		por norma,tem uma periodicidade de um valor aleatorio por volta de 20 - 30 segundos
+		
+		(2>>)
+		faz uso do protocolo ipv4 e os pacotes são enviados com destino ao 255.255.255.255 (que é o endereço de broadcast); usa o port 520 (é para onde está predefinido)
+		
+		
+		
+	1.4.	[ver nota de destaque "no auto-summary" no pdf para saber o que faz]
+	Agora as máscaras aparecem corretamente nas routing tables devido ao RIPv2 e ao no auto-summary;
+		o RIPv2 permite que as máscaras corretas sejam enviadas [de onde o router retira a mascara], e o no auto-summary força o router a apresentar a máscara correta;
+	
+	
+	
+	1.5.	(1>>) 
+		São agora recebidos pacotes do protocolo RIPv2; a periodicidade é mais ou menos a mesma, por volta dos 30 segundos entre os mesmos routers;
+		(2>>)
+		O RIPv2, ao contrário do RIPv1 (como já foi referido acima) vai enviar os pacotes com destino para 224.0.0.9, que é o endereço do multicast, que apenas os routers com rip protocol vão receber. Continua a usar o protocolo de IPv4 para transporte de pacotes, e usa o mesmo port number que o RIPv1.
+		(3>>)
+		[os custos são vistos dentro de "Routing" na captura]
+		metric = custo (interno do RIP)
+		
+		nota:	o custo (distancia administrativa) do rip é 120 [acho], e dentro do rip existe o custo de cada um deles, que aparece em "metric"
+		
+	
+	1.6.	no wireshark vai aparecer metric 16 (morreu)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
