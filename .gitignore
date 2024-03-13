@@ -3,6 +3,8 @@
 *.map
 *.o
 *.sym
+*.vpp
+*.bak
 
 *
 !*/
@@ -12,9 +14,9 @@
 *.d
 
 # Object files
-*.o
 *.ko
 *.obj
+*.o
 *.elf
 
 # Linker output

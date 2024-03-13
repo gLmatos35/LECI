@@ -1,0 +1,16 @@
+Mar 11 14:22:50.635 HYPERVISOR: Release 0.2.23-amd64/Linux (tag 2023010200)
+Mar 11 14:22:50.635 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 53539.
+Mar 11 14:22:50.643 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 11 14:22:50.644 HYPERVISOR: exec_cmd: hypervisor working_dir /home/guima/Desktop/Uni-backup/2oAno/2oSemestre/Redes2/Week4_6/ex1/project-files/dynamips 
+Mar 11 14:22:50.644 GENERAL: working_dir=/home/guima/Desktop/Uni-backup/2oAno/2oSemestre/Redes2/Week4_6/ex1/project-files/dynamips
+Mar 11 14:22:50.644 HYPERVISOR: exec_cmd: ethsw create Switch3 
+Mar 11 14:22:51.614 HYPERVISOR: exec_cmd: nio create_udp udp-29c20c2c-f863-43a4-897a-e6efde5b0180 10023 127.0.0.1 10022 
+Mar 11 14:22:51.614 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-29c20c2c-f863-43a4-897a-e6efde5b0180 
+Mar 11 14:22:51.630 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-29c20c2c-f863-43a4-897a-e6efde5b0180 1 
+Mar 11 14:22:51.661 HYPERVISOR: exec_cmd: nio create_udp udp-3a0b9def-e407-4bb2-9c37-95ee5a983e80 10026 127.0.0.1 10027 
+Mar 11 14:22:51.662 HYPERVISOR: exec_cmd: ethsw add_nio Switch3 udp-3a0b9def-e407-4bb2-9c37-95ee5a983e80 
+Mar 11 14:22:51.670 HYPERVISOR: exec_cmd: ethsw set_access_port Switch3 udp-3a0b9def-e407-4bb2-9c37-95ee5a983e80 1 
+Mar 11 14:23:52.086 HYPERVISOR: exec_cmd: ethsw delete Switch3 
+Mar 11 14:23:52.112 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 11 14:23:52.234 HYPERVISOR: Stopped.
+Mar 11 14:23:52.234 GENERAL: reset done.

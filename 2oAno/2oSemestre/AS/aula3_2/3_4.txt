@@ -1,0 +1,8 @@
+	Os clientes podem procurar por várias ofertas de menus online (associados a diferentes restaurantes) ou, caso optem por tal, navegar diretamente os menus oferecidos pelos restaurantes.
+	Associados a si, um cliente tem o seu nome, telemóvel e código postal.
+	O pedido é composto de uma ou mais ofertas e a ele está associado um pagamento (feito pelo cliente) e a sua entrega (que inclui o horário de entrega e o estado atual do pedido). A entrega do pedido está associada a um estafeta, que pode ou não estar encarregado de mais pedidos/entregas.
+	Os conteúdos dos menus e o seu preço pode ser alterado a qualquer momento pelos restaurantes sem afetar pedidos que já foram efetuados.
+	Existe uma entidade responsável que está encarregue de acompanhar a evolução das encomendas, o que inclui:
+		- estado das entregas;
+		- destino final da entrega;
+		- horário da entrega;

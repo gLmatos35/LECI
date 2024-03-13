@@ -68,6 +68,75 @@ dynamic routing:
 	1.6.	no wireshark vai aparecer metric 16 (morreu)
 	
 	
+	(acabar os ultimos exercicios - rapidos de se fazer +  notas acima)
+	
+	
+______________________________________________________________________________________________
+
+IPv4 Dynamic Routing with OSPFv2:
+
+	notas:
+	
+	inicialmente, à medida em que configuramos os routers com ospf, o router que for configurado primeiro fica como designated router e o segundo como backup (alegadamente). Apenas quando desligarmos os router e os voltarmos a ligar (ao mesmo tempo) é que eles vão trocar 'hello's' entre eles de modo a decidir qual deles será o designated router (maior id)
+	
+	as areas sao o conjunto de redes ospf (show ip ospf interface). Aqui colocámos na area 0 mas é possivel configurar de tal modo em que cada interface fique em areas diferentes
+	
+	
+	
+
+	2.1. (nada a apontar)
+	
+	
+	
+	2.2.	os router ID verificam se no comando [ sh ip ospf interface ] logo no começo
+		os DR (designated router) e BDR (backup DR) e os custos também
+		neste caso, o DR e BDR de cada rede receberam este "cargo" pela ordem de configuração
+		
+	
+		
+	2.3.	(temos agora uma mudança nos routers id para o que colocámos:
+	Router 1 - 1.1.1.1
+	Router 2 - 2.2.2.2
+	Router 3 - 3.3.3.3 (maior id -> maior prioridade na rede)
+	
+	-->	Como desligámos e voltámos a ligar os routers, houve agora uma 'eleição' do designated router -> em cada rede, o que tivesse maior router id ficava como DR e o segundo maior como BDR [todos os outros ficam classificados como other - DROTH]
+	
+	
+	
+	2.4.	(as mundaças verificam se nos pacotes [pretos] em Open Shortest Path First -> LS Update Packet -> LSA-type 2)
+	
+	ao dar shutdown à interface f0/1 do router 1, a rede perde o seu SDR (o router 1 deixa de ver essa interface e subsequentemente a rede) e então é encontrado um path alternativo (à volta) e isso tudo é anunciado através dos pacotes de update
+	
+	
+	2.5.	
+	...
+	
+	
+	
+	2.6.
+	antes: (custo 2)
+	
+      192.168.3.0/25 is subnetted, 1 subnets
+O        192.168.3.0 [110/3] via 10.2.3.3, 00:00:10, FastEthernet0/0
+                     [110/3] via 10.1.2.1, 00:02:14, FastEthernet0/1
+
+	
+	depois:	(custo 50)
+
+      192.168.3.0/25 is subnetted, 1 subnets		
+O        192.168.3.0 [110/3] via 10.2.3.3, 00:00:26, FastEthernet0/0
+
+	nos pacotes de update capturados no wireshark podemos ver a metrica a aumentar para 50 na interface correspondente :D
+	
+	
+	
+	2.7.
+	o que foi feito foi definir o router 1 como a saida default para a internet, no ip show route nada muda no router 1, mas nos outros routers, é adicionado o ip route com a rota 0.0.0.0
+	
+	
+	
+	
+	
 	
 	
 	
