@@ -3,7 +3,6 @@
 *.map
 *.o
 *.sym
-*.vpp
 *.bak
 
 *
