@@ -49,6 +49,8 @@ public class Pedido {
         return total;
     }
 
+    
+    //
     public double calcularCalorias() {
         double parcial;
         double total = 0;
@@ -62,6 +64,8 @@ public class Pedido {
     public void setHora(java.time.LocalDateTime value) {
         this.hora = value;
     }
+    //
+
 
     public void adicionarPrato(Prato pratoEscolhido) {
         opcoes.add(pratoEscolhido);
