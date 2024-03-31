@@ -1,0 +1,40 @@
+a)	No diagrama estão presentes 5 componentes:
+		- Log4j
+		- BlogDataSource
+		- ConversionManagement
+		- BroadcastEngine
+		- BlogViewer
+	- O Log4j implementa a interface Logger, interface a qual é necessária ao BlogDataSource, que a implementa.
+	- Por sua vez, o BlogDataSource a interface DataSource, que é necessária ao ConversionManagement.
+	- O Broadcast Engine necessita da interface FeedProvider, que está implementada no ConversionManagement
+	- O BlogViewer necessita também de uma interface que é fornecida pelo ConversionManagement, o DisplayConverter
+
+
+
+b)	O componente Log4j é um framework de logging para aplicações com base em Java, que permite aos desenvolvedores o registo de mensagens log. É util para mapear atividades e anotar problemas correntes de modo a facilitar a resolução dos mesmos.
+	As coordenadas para incluir o componente no Gradle seriam:
+
+<dependencies>
+  <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>2.23.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>2.23.1</version>
+  </dependency>
+</dependencies>
+
+	Onde:
+	. org.apache.logging.log4j é o grupo
+	. log4j-api e log4j-core são os artefactos
+	. 2.23.1 a versão 
+	
+
+
+
+a) O BroadcastEngine depende de um FeedProvider e o BlogViewer de um DisplayConverter. Ambas as interfaces são implementadas pelo ConversionManagement. O ConversionManagement, por sua vez, depende de um DataSource, o qual BlogDataSource implementa. O BlogDataSource depende de um Logger, que é implementado pelo Log4j. 
+
+b) Este componente é uma ferramenta de logging, para aplicações baseadas em Java. Dá aos desenvolvedores a capacidade de monitorizar o comportamento de uma app e ajudar na resolução e problemas.

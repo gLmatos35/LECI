@@ -134,15 +134,90 @@ O        192.168.3.0 [110/3] via 10.2.3.3, 00:00:26, FastEthernet0/0
 	o que foi feito foi definir o router 1 como a saida default para a internet, no ip show route nada muda no router 1, mas nos outros routers, é adicionado o ip route com a rota 0.0.0.0
 	
 	
+______________________________________________________________________________________________
+
+IPv6 Dynamic Routing
+
+	3.1.
+	não existem ainda neighbors porque ainda não foram trocados pacotes;
+	
+	
+	só é possivel dar ping às interfaces do proprio router porque ainda não foram estabelecidos quaisquer routings ipv6
+	
+______________________________________________________________________________________________
+
+OSPFv3
+	
+	OSPFv3 (?)
+
+no ip route
+E = external
+IA = inter area
+	
+	4.1.
+	show ipv6 ospf 1 database network
+	
+	-> cada um dos "blocos" são as redes (cada switch), não tem nada a ver necessáriamente com o próprio router
+		os attached routers são os router em contacto direto
+		com cada switch :)
+	daqui precisamos de tirar que pouca coisa tem de IPv6 e que é bastante semelhante ao IPv4 (as conclusoes a tirar sao as mesmas)
+	
+	o mesmo com os outros "show" ig
 	
 	
 	
+	4.2. 
+	same shit que dar clear em IPv4
 	
 	
+	4.3.
+	aparece no show ipv6 route dos outros routers como OE2 (external)	
 	
 	
+______________________________________________________________________________________________
+
+	OSPFv2 with Multiple Areas
+	
+	(a configuração de áreas é feita nas interfaces)
+	- sao configurados nas interfaces mas são as redes que pertencem às áreas;
 	
 	
+		
+	5.1.
+	nas rotas do router, os ips em outras areas aparecem como IA (inter area), o que significa que são do mesmo processo [ospf] mas de areas diferentes. Logo, só são ips conhecidos através de outros routers. Por exemplo, o router 1 não sabe que o router 2 existe, apenas que os seus ips existem por causa do router 3 (mas nao sabe que sao do router 2).
+	
+	
+	5.2
+	show ip ospf database
+	após definir as outras areas e fazer clear, aparecem agora as databases corretas (areas)
+	aparece como estando na rota 51 os ips das outras áreas mas o router não sabe de que área são, apenas os conhece porque lhe foram passados (direta ou indiretamente) pelo advertising router (no caso do router1, pelo router 3)
+		
+
+	
+	
+	ao definir o default para a net cuidado que o router 1 ja tinha isso, tem que se tirar primeiro porque senao ele nao o ira reconhecer no router 2
+	
+
+OSPFv2 External Routes Redistribution
+
+	6.2.
+	show ip ospf
+		> podemos ver as areas presentes em cada router 
+	-- no router 1 o backbone (0) [area 0] aparece como inativo e apenas mostra a area 51
+	-- ...
+	
+	
+	6.3	______________________________________________________________________________________________
+
+
+
+(ultima parte do guiao)
+:::
+temos um novo router na area 0;;
+vamos ter agora processos de ospf diferentes (1 e 2) e o router 1 vai servir de ponte de ligação entre ambos os processos (ig)
+
+vamos ter distribuiçao num sentido e advertisement das redes noutro (na ponte de ligação)
+ 	
 	
 	
 	
