@@ -1,0 +1,15 @@
+GAS LISTING prog1b.s 			page 1
+
+
+DEFINED SYMBOLS
+            prog1b.s:1      *ABS*:0000000000000001 inkey
+            prog1b.s:2      *ABS*:0000000000000003 putChar
+            prog1b.s:3      *ABS*:0000000000000006 printInt
+            prog1b.s:9      .text:0000000000000000 main
+            prog1b.s:10     .text:0000000000000004 do
+            prog1b.s:14     .text:0000000000000010 if
+            prog1b.s:20     .text:000000000000002c else
+            prog1b.s:24     .text:0000000000000038 endif
+            prog1b.s:28     .text:000000000000003c while
+
+NO UNDEFINED SYMBOLS

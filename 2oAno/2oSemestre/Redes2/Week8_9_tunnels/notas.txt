@@ -1,0 +1,19 @@
+8_9
+
+como saber se é um tunel:
+No wireshark quando temos 2 cabeçalhos de ip
+
+no wireshark a ordem das coisas importa, pensar assim. o ethernet é o mais baixo, mas está por cima, logo, o 2o cabeçalho é o que está sobre o 1º de ip ( ordem inversa )
+
+o pacote será encaminhado para o 1o cabeçalho ( o 2o nao importa p isso )
+este tipo de tuneis apenas interessa para indicar ao router intermedio que é para mandar diretamente para o destino
+Chegando ao destino do tunel (1o cabeçalho) o router de destino usa agora o 2o cabeçalho e faz o respetivo encaminhamento
+
+No mundo real, é usado..
+ex, nao existe uma firewall dedicada, entao usa se um tunel para forçar o envio para algum sitio em que sejam feitas as analises dos pacotes e depois entao é encaminhado ao destino final.
+
+
+1.5
+
+nao muda nada nos routes estáticos mas nos pacotes aparecerá um novo cabeçalho
+este gre apenas serve para "indicar o que vem a seguir" e so aparece no request por causa que nao existe rota estática de volta, só de ida. ( o tunel apenas força a ida (ig))

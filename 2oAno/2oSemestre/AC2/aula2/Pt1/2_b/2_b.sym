@@ -1,0 +1,15 @@
+GAS LISTING 2_b.s 			page 1
+
+
+DEFINED SYMBOLS
+               2_b.s:3      *ABS*:0000000000000003 putChar
+               2_b.s:4      *ABS*:0000000000000007 printInt
+               2_b.s:5      *ABS*:000000000000000b readCoreTimer
+               2_b.s:6      *ABS*:000000000000000c resetCoreTimer
+               2_b.s:12     .text:0000000000000000 main
+               2_b.s:19     .text:0000000000000010 while
+               2_b.s:50     .text:0000000000000054 delay
+               2_b.s:35     .text:0000000000000040 endw
+               2_b.s:56     .text:0000000000000060 while2
+
+NO UNDEFINED SYMBOLS

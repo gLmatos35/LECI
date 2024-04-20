@@ -1,0 +1,24 @@
+GAS LISTING prog2.s 			page 1
+
+
+DEFINED SYMBOLS
+             prog2.s:2      *ABS*:0000000000000001 inkey
+             prog2.s:3      *ABS*:0000000000000003 putChar
+             prog2.s:4      *ABS*:0000000000000006 printInt
+             prog2.s:5      *ABS*:000000000000000b readCoreTimer
+             prog2.s:6      *ABS*:000000000000000c resetCoreTimer
+             prog2.s:12     .text:0000000000000000 main
+             prog2.s:26     .text:0000000000000028 while
+             prog2.s:31     .text:0000000000000034 if3
+             prog2.s:35     .text:0000000000000050 if4
+             prog2.s:38     .text:0000000000000060 next
+             prog2.s:46     .text:0000000000000088 exit
+             prog2.s:40     .text:000000000000006c stop
+             prog2.s:121    .text:0000000000000184 delay
+             prog2.s:95     .text:000000000000012c if1
+             prog2.s:103    .text:000000000000015c endifs
+             prog2.s:99     .text:0000000000000144 if2
+             prog2.s:126    .text:0000000000000190 whileD
+             prog2.s:135    .text:00000000000001bc endwd
+
+NO UNDEFINED SYMBOLS

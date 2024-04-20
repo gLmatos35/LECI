@@ -1,0 +1,24 @@
+GAS LISTING prog1.s 			page 1
+
+
+DEFINED SYMBOLS
+             prog1.s:1      *ABS*:0000000000000001 UP
+             prog1.s:2      *ABS*:0000000000000000 DOWN
+             prog1.s:3      *ABS*:0000000000000001 inkey
+             prog1.s:4      *ABS*:0000000000000003 putChar
+             prog1.s:5      *ABS*:0000000000000006 printInt
+             prog1.s:11     .text:0000000000000000 main
+             prog1.s:19     .text:0000000000000018 do
+             prog1.s:88     .text:00000000000000e8 wait
+             prog1.s:50     .text:000000000000007c state
+             prog1.s:51     .text:000000000000007c if
+             prog1.s:55     .text:0000000000000090 if2
+             prog1.s:62     .text:00000000000000a4 endstate
+             prog1.s:64     .text:00000000000000a4 if3
+             prog1.s:69     .text:00000000000000bc else3
+             prog1.s:72     .text:00000000000000c4 endif3
+             prog1.s:73     .text:00000000000000c4 while
+             prog1.s:95     .text:0000000000000108 for
+             prog1.s:99     .text:000000000000011c endf
+
+NO UNDEFINED SYMBOLS

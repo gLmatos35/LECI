@@ -1,0 +1,28 @@
+GAS LISTING prog4.s 			page 1
+
+
+DEFINED SYMBOLS
+             prog4.s:1      *ABS*:0000000000000003 putChar
+             prog4.s:2      *ABS*:0000000000000006 printInt
+             prog4.s:3      *ABS*:000000000000000b readCoreTimer
+             prog4.s:4      *ABS*:000000000000000c resetCoreTimer
+             prog4.s:6      *ABS*:000000000000bf88 baseAdd
+             prog4.s:7      *ABS*:0000000000006100 trise
+             prog4.s:8      *ABS*:0000000000006110 porte
+             prog4.s:9      *ABS*:0000000000006120 late
+             prog4.s:11     *ABS*:0000000000006040 trisb
+             prog4.s:12     *ABS*:0000000000006050 portb
+             prog4.s:13     *ABS*:0000000000006060 latb
+             prog4.s:15     *ABS*:00000000000060c0 trisd
+             prog4.s:16     *ABS*:00000000000060d0 portd
+             prog4.s:17     *ABS*:00000000000060e0 latd
+             prog4.s:23     .text:0000000000000000 main
+             prog4.s:31     .text:0000000000000014 while
+             prog4.s:40     .text:0000000000000030 wait
+             prog4.s:51     .text:0000000000000060 if
+             prog4.s:60     .text:0000000000000088 if2
+             prog4.s:56     .text:0000000000000080 continue
+             prog4.s:67     .text:00000000000000a0 endifs
+             prog4.s:64     .text:000000000000009c continue2
+
+NO UNDEFINED SYMBOLS
