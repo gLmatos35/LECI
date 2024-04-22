@@ -1,0 +1,17 @@
+Cisco Router Simulation Platform (version 0.2.23-amd64/Linux stable)
+Copyright (c) 2005-2011 Christophe Fillot.
+Build date: Jan  2 2023 12:00:00
+
+Log file: writing to dynamips_i3_log.txt
+Console binding address set to 127.0.0.1
+ILT: loaded table "mips64j" from cache.
+ILT: loaded table "mips64e" from cache.
+ILT: loaded table "ppc32j" from cache.
+ILT: loaded table "ppc32e" from cache.
+Hypervisor TCP control server started (IP 127.0.0.1 port 49695).
+NIO udp-54525b7b-4be2-4de6-83e2-555e7b98f48e: capturing to file '/home/guima/Desktop/Uni-backup/2oAno/2oSemestre/Redes2/Pratica/Week8_9_tunnels/ex1/ex1/project-files/captures/R3_FastEthernet10_to_Switch3_Ethernet0.pcap'
+Hypervisor: closing control sockets.
+Hypervisor: closing remote client connections.
+Shutdown in progress...
+NIO udp-54525b7b-4be2-4de6-83e2-555e7b98f48e: ending packet capture.
+Shutdown completed.

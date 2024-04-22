@@ -1,0 +1,7 @@
+(dentro dos sistemas autonomos vamos ter ospf)
+estes dois processos são independentes e, em redes mais complexas, poderia vir a existir algum tipo de conflito.
+
+fiquei ainda na configuração dos ips das interfaces
+
+o unico feito foi o do router 1, falta todos os outros mais o resto do guiao
+

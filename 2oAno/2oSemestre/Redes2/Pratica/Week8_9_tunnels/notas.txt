@@ -17,3 +17,39 @@ ex, nao existe uma firewall dedicada, entao usa se um tunel para forçar o envio
 
 nao muda nada nos routes estáticos mas nos pacotes aparecerá um novo cabeçalho
 este gre apenas serve para "indicar o que vem a seguir" e so aparece no request por causa que nao existe rota estática de volta, só de ida. ( o tunel apenas força a ida (ig))
+
+
+
+
+
+
+
+
+
+###################################################################
+
+IPv6 over IPv4 Tunneling
+
+2.1.
+Não há conectividade (falta de rotas)
+
+2.2.
+>> Continua sem existir conectividade (ainda falta de rotas)
+
+>> Estabelecer uma rota fixa para passagem de pacotes de modo a irem diretamente (de forma virtual) ao outro router.
+
+2.3.
+(2)
+>> É o pacote IPv4 que transporta o pacote IPv6 (é o mais próximo da ethernet a nivel de layers [está 'acima']);
+
+2.4.
+(alegadamente, é igual ao anterior)
+
+nota:
+ao analisar os pacotes, a partir do pacote IPv4 (que transporta outro pacote), no Protocol conseguimos saber o que vem nesse pacote, que indica que transporta um GRE. Esse indica entao que transporta um pacote IPv6
+
+num tipo de tunel que nao GRE, ao inves de GRE no protocolo do ipv4 teriamos diretamente ipv6 (ou outro se fosse o caso)
+
+
+
+
