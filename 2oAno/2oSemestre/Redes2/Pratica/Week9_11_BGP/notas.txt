@@ -4,4 +4,7 @@ estes dois processos são independentes e, em redes mais complexas, poderia vir 
 fiquei ainda na configuração dos ips das interfaces
 
 o unico feito foi o do router 1, falta todos os outros mais o resto do guiao
+reminder que dentro dos "AS" aparece apenas a rede e nao o ip da interface (está como .0 (ou seja a rede)) (no gns eu coloquei bem) <- alegadamente
 
+ao fazer sh ip route no R2A, para o router R2B nao aparece uma rota por BGP porque tem um custo maior do que o de OSPF:
+	- o custo externo de BGP é 20 enquanto que o interno é de 200

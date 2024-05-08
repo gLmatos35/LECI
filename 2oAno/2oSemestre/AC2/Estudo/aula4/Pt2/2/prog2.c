@@ -10,7 +10,7 @@ int main(void) {
     // configure RB8-RB14 as outputs 
     TRISB = TRISB & 0x80FF;
     // configure RD5-RD6 as outputs 
-        TRISD = TRISD & 0xFF9F;
+    TRISD = TRISD & 0xFF9F;
 
     while(1) 
     { 
