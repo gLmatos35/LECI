@@ -1,0 +1,53 @@
+May 20 13:18:04.609 HYPERVISOR: Release 0.2.23-amd64/Linux (tag 2023010200)
+May 20 13:18:04.609 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 45681.
+May 20 13:18:04.618 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 13:18:04.619 HYPERVISOR: exec_cmd: hypervisor working_dir /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips 
+May 20 13:18:04.619 GENERAL: working_dir=/home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips
+May 20 13:18:04.619 HYPERVISOR: exec_cmd: hypervisor working_dir /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/1a466ebd-032f-411a-a5a4-a0b4f884209f 
+May 20 13:18:04.619 GENERAL: working_dir=/home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/1a466ebd-032f-411a-a5a4-a0b4f884209f
+May 20 13:18:04.619 HYPERVISOR: exec_cmd: vm create R2B 3 c7200 
+May 20 13:18:04.619 VM: VM R2B created.
+May 20 13:18:04.619 HYPERVISOR: exec_cmd: vm set_con_tcp_port R2B 5012 
+May 20 13:18:04.619 HYPERVISOR: exec_cmd: c7200 get_mac_addr R2B 
+May 20 13:18:04.619 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:04.620 HYPERVISOR: exec_cmd: vm slot_add_binding R2B 0 0 C7200-IO-FE 
+May 20 13:18:04.620 HYPERVISOR: exec_cmd: vm set_disk0 R2B 0 
+May 20 13:18:04.620 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:04.620 HYPERVISOR: exec_cmd: vm set_idle_pc R2B 0x601712a8 
+May 20 13:18:04.620 HYPERVISOR: exec_cmd: vm set_ios R2B /home/guima/GNS3/images/IOS/c7200-adventerprisek9-mz.151-4.M2.image 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: c7200 set_mac_addr R2B ca03.276e.0000 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm set_nvram R2B 512 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm set_ram R2B 512 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm slot_remove_binding R2B 0 0 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm slot_add_binding R2B 0 0 C7200-IO-2FE 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:04.621 HYPERVISOR: exec_cmd: vm slot_add_binding R2B 1 0 PA-2FE-TX 
+May 20 13:18:05.366 HYPERVISOR: exec_cmd: nio create_udp udp-adb30e04-7aa1-4d9b-9850-3763fd3dc3fa 10020 127.0.0.1 10021 
+May 20 13:18:05.574 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2B 0 1 udp-adb30e04-7aa1-4d9b-9850-3763fd3dc3fa 
+May 20 13:18:05.575 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:05.601 HYPERVISOR: exec_cmd: nio create_udp udp-ca72eb38-c1d7-4f16-ba6f-bf67839d69ee 10024 127.0.0.1 10025 
+May 20 13:18:05.602 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2B 1 0 udp-ca72eb38-c1d7-4f16-ba6f-bf67839d69ee 
+May 20 13:18:05.602 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:18:05.647 HYPERVISOR: exec_cmd: nio create_udp udp-c48ab078-389e-4988-8d67-1dc5ef546f3c 10028 127.0.0.1 10029 
+May 20 13:18:05.648 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R2B 0 0 udp-c48ab078-389e-4988-8d67-1dc5ef546f3c 
+May 20 13:18:05.649 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:20:16.076 HYPERVISOR: exec_cmd: vm set_ghost_status R2B 2 
+May 20 13:20:16.077 HYPERVISOR: exec_cmd: vm set_ghost_file R2B /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/c7200-adventerprisek9-mz.151-4.M2.image-512.ghost 
+May 20 13:20:16.077 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 13:20:16.078 HYPERVISOR: exec_cmd: vm set_config R2B configs/i3_startup-config.cfg configs/i3_private-config.cfg 
+May 20 13:20:16.078 HYPERVISOR: exec_cmd: vm start R2B 
+May 20 13:20:46.329 HYPERVISOR: exec_cmd: vm extract_config R2B 
+May 20 13:23:46.339 HYPERVISOR: exec_cmd: vm extract_config R2B 
+May 20 14:06:46.396 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 14:06:46.396 HYPERVISOR: exec_cmd: vm stop R2B 
+May 20 14:06:46.530 VM: VM R2B shutdown.
+May 20 14:06:46.531 HYPERVISOR: exec_cmd: vm extract_config R2B 
+May 20 14:06:46.844 HYPERVISOR: exec_cmd: vm get_status R2B 
+May 20 14:06:46.845 HYPERVISOR: exec_cmd: vm extract_config R2B 
+May 20 14:06:46.846 HYPERVISOR: exec_cmd: vm delete R2B 
+May 20 14:06:46.846 VM: VM R2B destroyed.
+May 20 14:06:46.846 HYPERVISOR: exec_cmd: hypervisor stop 
+May 20 14:06:46.985 HYPERVISOR: Stopped.
+May 20 14:06:46.986 GENERAL: reset done.

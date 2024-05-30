@@ -1,0 +1,15 @@
+Rl = 4.7 kOhm
+
+Vr - tensao de ripple
+Vp - tensao de pico (inicial)
+
+Vr = Vp * (T / (2*R*C))
+
+Vp = 5V
+Vr = 5% de Vp
+
+T = 1/1000 = 0,001
+
+C = Vr / Vp * (Rl / T)
+
+C = 0,000004255  (4,26 micro)

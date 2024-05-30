@@ -1,0 +1,65 @@
+May 20 13:18:04.548 HYPERVISOR: Release 0.2.23-amd64/Linux (tag 2023010200)
+May 20 13:18:04.548 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 42567.
+May 20 13:18:04.557 HYPERVISOR: exec_cmd: hypervisor version 
+May 20 13:18:04.557 HYPERVISOR: exec_cmd: hypervisor working_dir /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips 
+May 20 13:18:04.557 GENERAL: working_dir=/home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips
+May 20 13:18:04.558 HYPERVISOR: exec_cmd: hypervisor working_dir /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/568c30f0-b0f6-48db-8b27-3ee9d7e52909 
+May 20 13:18:04.558 GENERAL: working_dir=/home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/568c30f0-b0f6-48db-8b27-3ee9d7e52909
+May 20 13:18:04.558 HYPERVISOR: exec_cmd: vm create R1 1 c7200 
+May 20 13:18:04.558 VM: VM R1 created.
+May 20 13:18:04.558 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5010 
+May 20 13:18:04.558 HYPERVISOR: exec_cmd: c7200 get_mac_addr R1 
+May 20 13:18:04.558 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:18:04.559 HYPERVISOR: exec_cmd: vm slot_add_binding R1 0 0 C7200-IO-FE 
+May 20 13:18:04.559 HYPERVISOR: exec_cmd: vm set_disk0 R1 0 
+May 20 13:18:04.559 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:18:04.559 HYPERVISOR: exec_cmd: vm set_idle_pc R1 0x601712a8 
+May 20 13:18:04.560 HYPERVISOR: exec_cmd: vm set_ios R1 /home/guima/GNS3/images/IOS/c7200-adventerprisek9-mz.151-4.M2.image 
+May 20 13:18:04.560 HYPERVISOR: exec_cmd: c7200 set_mac_addr R1 ca01.2732.0000 
+May 20 13:18:04.560 HYPERVISOR: exec_cmd: vm set_nvram R1 512 
+May 20 13:18:04.560 HYPERVISOR: exec_cmd: vm set_ram R1 512 
+May 20 13:18:04.561 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:18:04.561 HYPERVISOR: exec_cmd: vm slot_remove_binding R1 0 0 
+May 20 13:18:04.561 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:18:04.561 HYPERVISOR: exec_cmd: vm slot_add_binding R1 0 0 C7200-IO-2FE 
+May 20 13:18:04.561 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:18:04.562 HYPERVISOR: exec_cmd: vm slot_add_binding R1 1 0 PA-2FE-TX 
+May 20 13:18:04.786 HYPERVISOR: exec_cmd: nio create_udp udp-7741b93f-5f44-4658-ab77-cd5b89349dfe 10002 127.0.0.1 10003 
+May 20 13:18:05.000 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 0 1 udp-7741b93f-5f44-4658-ab77-cd5b89349dfe 
+May 20 13:18:05.001 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:18:05.024 HYPERVISOR: exec_cmd: nio create_udp udp-612d26cc-24c7-468c-b98a-ded6f17c36ed 10006 127.0.0.1 10007 
+May 20 13:18:05.026 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 0 0 udp-612d26cc-24c7-468c-b98a-ded6f17c36ed 
+May 20 13:18:05.026 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:20:15.438 HYPERVISOR: exec_cmd: vm create Ghost 0 c7200 
+May 20 13:20:15.439 VM: VM Ghost created.
+May 20 13:20:15.439 HYPERVISOR: exec_cmd: vm set_ios Ghost /home/guima/GNS3/images/IOS/c7200-adventerprisek9-mz.151-4.M2.image 
+May 20 13:20:15.440 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+May 20 13:20:15.440 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/c7200-adventerprisek9-mz.151-4.M2.image-512.ghost 
+May 20 13:20:15.441 HYPERVISOR: exec_cmd: vm set_ram Ghost 512 
+May 20 13:20:15.441 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 20 13:20:15.441 HYPERVISOR: exec_cmd: vm set_config Ghost configs/i0_startup-config.cfg 
+May 20 13:20:15.442 HYPERVISOR: exec_cmd: vm start Ghost 
+May 20 13:20:15.849 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 20 13:20:15.849 HYPERVISOR: exec_cmd: vm stop Ghost 
+May 20 13:20:16.072 VM: VM Ghost shutdown.
+May 20 13:20:16.073 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+May 20 13:20:16.074 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+May 20 13:20:16.074 VM: VM Ghost destroyed.
+May 20 13:20:16.075 HYPERVISOR: exec_cmd: vm set_ghost_status R1 2 
+May 20 13:20:16.075 HYPERVISOR: exec_cmd: vm set_ghost_file R1 /home/guima/Desktop/LECI/2oAno/2oSemestre/Redes2/Pratica/Week9_11_BGP/Ex2/project-files/dynamips/c7200-adventerprisek9-mz.151-4.M2.image-512.ghost 
+May 20 13:20:16.076 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 13:20:16.076 HYPERVISOR: exec_cmd: vm set_config R1 configs/i1_startup-config.cfg configs/i1_private-config.cfg 
+May 20 13:20:16.076 HYPERVISOR: exec_cmd: vm start R1 
+May 20 13:20:46.310 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 20 13:22:16.317 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 20 14:06:46.394 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 14:06:46.395 HYPERVISOR: exec_cmd: vm stop R1 
+May 20 14:06:46.510 VM: VM R1 shutdown.
+May 20 14:06:46.511 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 20 14:06:46.813 HYPERVISOR: exec_cmd: vm get_status R1 
+May 20 14:06:46.813 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 20 14:06:46.814 HYPERVISOR: exec_cmd: vm delete R1 
+May 20 14:06:46.814 VM: VM R1 destroyed.
+May 20 14:06:46.815 HYPERVISOR: exec_cmd: hypervisor stop 
+May 20 14:06:46.914 HYPERVISOR: Stopped.
+May 20 14:06:46.914 GENERAL: reset done.

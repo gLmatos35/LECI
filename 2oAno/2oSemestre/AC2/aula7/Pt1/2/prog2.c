@@ -5,6 +5,8 @@ volatile unsigned char voltage = 0; // Global variable
 // caso o sistema esteja a trabalhar em modo otimizado poderia usar um valor cache,
 // ou seja, um valor que poderia nao ser o atual
 
+
+
 void delay(unsigned int ms)
 {
     resetCoreTimer();
@@ -13,13 +15,10 @@ void delay(unsigned int ms)
 
 
 
-
 unsigned char toBcd(unsigned char value)
 {
     return ((value / 10) << 4) + (value % 10);
 }
-
-
 
 
 
@@ -53,7 +52,6 @@ void send2displays(unsigned char value)
     
     displayFlag = !displayFlag;
 }
-
 
 
 
@@ -117,8 +115,6 @@ int main (void) {
     }
 return 0;
 }
-
-
 
 
 

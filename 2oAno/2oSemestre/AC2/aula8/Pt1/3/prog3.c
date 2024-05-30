@@ -19,7 +19,7 @@ int main(void) {
 void _int_(12) isr_t3(void) {           // Replace VECTOR by the timer T3  
                                         //  vector number 
 
-    static int Jeff = 0;
+    static int Jeff = 0;            // como é static nao é reinicializada, apenas a 1ª vez
     if (Jeff%2 == 0) {
         putChar('.'); 
     }

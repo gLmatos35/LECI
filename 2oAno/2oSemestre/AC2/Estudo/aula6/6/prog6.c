@@ -1,7 +1,5 @@
 # include <detpic32.h>
 
-
-
 void delay(int ms) {
     resetCoreTimer();
     while(readCoreTimer() < PBCLK/1000 * ms);
