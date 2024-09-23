@@ -12,7 +12,17 @@ void delay(unsigned int ms) {
     while(readCoreTimer() < PBCLK/1000 * ms);
 }
 
+char getC(void) {
+    // if OERR == 1 then reset OERR
+    if(U2STAbits.OERR == 1) {U2STAbits.OERR == 0;}
+    // wait while URXDA == 0
+    while(U2STAbits.URXDA == 0);
+    // return UxRXREG
+    return U2RXREG;
+}
+
 int main(void) {
+    unsigned char car;
     // Configure UART2: (115200,N,8,1)
     // 1 - Configure BaudRate Generator 
     U2BRG = 42;                 // UxBRG = (20*10^6)
@@ -28,8 +38,8 @@ int main(void) {
     U2MODEbits.ON = 1;
 
     while(1) {
-        putC('+');
-        delay(1000);
+        car = getC();
+        putC(car);
     }
     return 0;
 }

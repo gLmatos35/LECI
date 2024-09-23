@@ -36,9 +36,9 @@ int main(void) {
     U2BRG = 10;         // U2BRG = (20 * 10⁶6) / (16 * 115200) - 1     // arredondar para o inteiro mais proximo
     U2MODEbits.BRGH = 0;        // 16x baud clock enabled
     // 2 – Configure number of data bits, parity and number of stop bits
+    //     (see U2MODE register) 
     U2MODEbits.PDSEL = 0;       // 8-bit data no parity
     U2MODEbits.STSEL = 0;
-    //     (see U2MODE register) 
     // 3 – Enable the trasmitter and receiver modules (see register U2STA) 
     U2STAbits.UTXEN = 1;
     U2STAbits.URXEN = 1;

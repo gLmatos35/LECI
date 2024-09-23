@@ -12,6 +12,13 @@ void delay(unsigned int ms) {
     while(readCoreTimer() < PBCLK/1000 * ms);
 }
 
+void putStr(char *str) {
+    while(*str != '\0'){
+        putC(*str);
+        str++;
+    }
+}
+
 int main(void) {
     // Configure UART2: (115200,N,8,1)
     // 1 - Configure BaudRate Generator 
@@ -28,7 +35,7 @@ int main(void) {
     U2MODEbits.ON = 1;
 
     while(1) {
-        putC('+');
+        putStr("o rafa é gay\n");
         delay(1000);
     }
     return 0;

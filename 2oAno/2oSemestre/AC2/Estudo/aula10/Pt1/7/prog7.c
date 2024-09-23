@@ -7,9 +7,11 @@ void putC(char byte2send) {
     U2TXREG = byte2send;
 }
 
-void delay(unsigned int ms) {
-    resetCoreTimer();
-    while(readCoreTimer() < PBCLK/1000 * ms);
+void putStr(char *str) {
+    while(*str != '\0'){
+        putC(*str);
+        str++;
+    }
 }
 
 int main(void) {
@@ -28,8 +30,35 @@ int main(void) {
     U2MODEbits.ON = 1;
 
     while(1) {
-        putC('+');
-        delay(1000);
+        static int count = 0;
+        static char array[100];
+        int i = 0, temp = count;
+
+        // Converter count para binário
+        if(temp == 0) {
+            array[i++] = '0';
+        } else {
+            while(temp > 0) {
+                array[i++] = (temp % 2) ? '1' : '0';
+                temp /= 2;
+            }
+        }
+        array[i] = '\0';
+
+        // Inverter a string para representar corretamente a ordem binária
+        int len = i;
+        int j;
+        for(j = 0; j < len / 2; j++) {
+            char swap = array[j];
+            array[j] = array[len - j - 1];
+            array[len - j - 1] = swap;
+        }
+
+        putStr(array);
+        putC('\n');
+        count = ((count+1) % 10);
+        resetCoreTimer();
+        while(readCoreTimer() < 20000000);
     }
     return 0;
 }

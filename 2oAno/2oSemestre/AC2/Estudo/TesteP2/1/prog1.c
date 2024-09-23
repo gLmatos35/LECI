@@ -2,7 +2,7 @@
 
 void delay(unsigned int ms) {
     resetCoreTimer();
-    while(readCoreTimer() < PBCLOCK/1000 * ms)
+    while(readCoreTimer() < PBCLK/1000 * ms)
 }
 
 int main(void) {
