@@ -103,6 +103,10 @@ void menuChoiceLoad()
 /* The main function */
 int main()
 {
+    SllNode *list = NULL;
+    sllInsert(list, '1234', 'ola')
+    // ...
+
     bool end = false;
     while (not end)
     {

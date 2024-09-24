@@ -23,10 +23,42 @@ void sllPrint(SllNode *list, FILE *fout)
 
 /*******************************************************/
 
-SllNode* sllInsert(SllNode* list, uint32_t nmec, const char *name)
+SllNode* sllInsert(SllNode* list, uint32_t nmec, const char name)
 {
     assert(name != NULL && name[0] != '\0');
-    assert(!sllExists(list, nmec));
+    // descomentar depois
+    // assert(!sllExists(list, nmec));
+
+    SllNode newNode = (SllNode)malloc(sizeof(SllNode));
+    if (newNode == NULL) {
+        // return list; 
+        fprintf(stderr, 'newNode == NULL')
+        exit(1);
+    }
+
+    newNode -> reg.nmec = nmec;
+    newNode -> reg.name = (char)malloc(strlen(name) + 1);
+    if (newNode -> reg.name == NULL) {
+        exit(1);
+    }
+    strcpy(newNode -> reg.name, name);
+    newNode -> next = NULL;
+
+
+    if (list == NULL || nmec < list -> reg.nmec) {
+        newNode -> next = list;
+        return newNode;
+    }
+
+
+    SllNode *current = list;
+    while (current -> next != NULL && current -> next -> reg.nmec < nmec) {
+        current = current -> next;
+    }
+
+    newNode -> next = current -> next;
+    current -> next = newNode;
+
 
     return list;
 }
