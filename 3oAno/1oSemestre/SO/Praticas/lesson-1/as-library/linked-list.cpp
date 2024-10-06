@@ -44,12 +44,10 @@ SllNode* sllInsert(SllNode* list, uint32_t nmec, const char name)
     strcpy(newNode -> reg.name, name);
     newNode -> next = NULL;
 
-
     if (list == NULL || nmec < list -> reg.nmec) {
         newNode -> next = list;
         return newNode;
     }
-
 
     SllNode *current = list;
     while (current -> next != NULL && current -> next -> reg.nmec < nmec) {
@@ -58,7 +56,6 @@ SllNode* sllInsert(SllNode* list, uint32_t nmec, const char name)
 
     newNode -> next = current -> next;
     current -> next = newNode;
-
 
     return list;
 }
