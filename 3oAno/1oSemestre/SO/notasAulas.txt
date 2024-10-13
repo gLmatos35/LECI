@@ -1,0 +1,106 @@
+LESSON2 - FORK
+
+Um processo que utilize uma variavel "i", após um fork do mesmo, estarão presentes duas variaveis "i", mas não sao a mesma nem interferem uma com a outra.. sao independentes.
+creio que se for utilizado um ponteiro, esse ponteiro é partilhado porque o endereço é o mesmo (ig)
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+LESSON3 - SEMAPHORE
+
+- através da chave (key_t, é um valor inteiro) conseguimos chegar ao shmid. É a partir do id que chegamos ao endereço de memória pretendido.
+	# novamente, como na aula anterior, o que é usado da biblioteca nativa (<sys/shm.h>) está carregado de programação defensiva. Já na biblioteca fornecida (<process.h> o wrapper já resolve isso.
+	
+// creation:
+(novamente, pshmget e nao shmget pelo que está imediatamente acima)
+shmid = pshmget(key,size,0600 | IPC_CREAT | IPC_EXCL);
+
+0600 (diferente de 600) - está lá para permissões
+
+// shm - shared memory
+// use existing:
+shmid = pshmget(key,0,0);
+
+// attach shm to pointer address:
+p = shmat(shmid,NULL,0);
+
+// detach shm from pointer address:
+pshmdt(p);
+
+// destroy shm
+pshmctl(shmid, IPC_RMID, NULL);
+
+// cada função pode ter várias funções, dependendo dos argumentos que são passados. Por exemplo a get. A destroy também, visto que é uma função bastante complexa.
+
+// no comportamento original dos semaforos, é sempre possivel fazer adições ao semáforo. No entanto, o decremento só pode ser realizado se o valor por positivo - caso contrário fica bloqueado.
+
+// O semaforo já é implementado de forma partilhada em todos os processos, as suas variáveis não tem de ser criadas em memória partilhada porque o semáforo ja faz isso.
+
+
+// creation (1 semaphore):
+semid = psemget(key,1,0600 | IPC_CREAT | IPC_EXCL)
+
+// use existing:
+semid = psemget(key,0,0);
+
+// destroy sem 0
+psemctl(semid,0,IPC_RMID,NULL);
+
+// decrement:
+struct sembuf down = {0, -1, 0};
+psemop(semid, &down, 1);
+// or simply:
+psem_down(semid,0);
+
+// increment:
+struct sembuf up = {0, 1, 0};
+psemop(semid, &up, 1);
+// or simply:
+psem_up(semid, 0);
+
+
+
+
+buffer$ ./bb-unsafe -i 1000
+Parameters: 5 producers, 5 consumers, 1000 items
+Producer 1 finished
+Producer 2 finished
+Producer 3 finished
+Producer 4 finished
+Producer 5 finished
+^C
+
+// processos do unsafe - são mortos ao dar reboot
+glmatos@glmatos-Victus-by-HP-Gaming-Laptop-16-s0xxx:~/Desktop/LECI/3oAno/1oSemestre/SO/Praticas/lesson-3/code/bounded-buffer$ ipcs | grep 2416
+0x00000000 98306      glmatos    600        2416       0                       
+0x00000000 98307      glmatos    600        2416       0                       
+0x00000000 98308      glmatos    600        2416       0                       
+0x00000000 98309      glmatos    600        2416       0                       
+0x00000000 65574      glmatos    600        2416       0                       
+0x00000000 65575      glmatos    600        2416       0                       
+0x00000000 65576      glmatos    600        2416       0                       
+0x00000000 65578      glmatos    600        2416       0                       
+0x00000000 65579      glmatos    600        2416       0                       
+0x00000000 65580      glmatos    600        2416       0                       
+0x00000000 65581      glmatos    600        2416       0                       
+0x00000000 65582      glmatos    600        2416       0                       
+0x00000000 65584      glmatos    600        2416       0                       
+0x00000000 65585      glmatos    600        2416       0                       
+0x00000000 65586      glmatos    600        2416       0                       
+0x00000000 65587      glmatos    600        2416       0                       
+0x00000000 65588      glmatos    600        2416       0           
+
+glmatos@glmatos-Victus-by-HP-Gaming-Laptop-16-s0xxx:~/Desktop/LECI/3oAno/1oSemestre/SO/Praticas/lesson-3/code/bounded-buffer$ ipcs | grep 2416 | wc -l
+17
+
+
+// TRAINING EXERCISE 1
+// na main, na espera
+while(!fifoIsEmpty());		// esperar que a fifo fique vazia
+// e depois sim substituir o wait pelo kill
+// agora sim, será seguro matar o programa
+
+// TRAINING EXERCISE 2
+// uma maneira mais simpatica de terminar o programa seria usar um dummy [para cada consumidor] item que nao possa ser produzido pelo produtor (neste caso teria de ser um valor muito alto que exceda o numero maximo de produtores possiveis no programa. O stor sugeriou ainda usar o v1 e o v2). Assim, sabemos que o dummy nao foi produzido por nenhum dos produtores, pelo que os consumidores ja podem sair do programa (quando acabarem de consumir tudo)
+// terminar entao o programa quando esse dummy item for recebido
+
+// injetar os dummies num ciclo à parte
