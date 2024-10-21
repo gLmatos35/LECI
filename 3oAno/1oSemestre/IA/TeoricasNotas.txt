@@ -1,0 +1,8 @@
+Em que situação pesquisa sem largura podem ser consideradas otima?
+	- é otima em termos de profundidade quanto ao custo de ações
+	
+Complexidade espacial da pesquisa de custo uniforme?
+	- exponencial
+	
+Pesquisa gulosa é um caso particular da pesquisa A*?
+	- como a pesquisa gulosa ignora totalmente o custo acumulado, não pode ser considerada verdadeiramente um caso particular da pesquisa A*, ainda que sendo uma variante desta pesquisa.

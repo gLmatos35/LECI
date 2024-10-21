@@ -1,0 +1,72 @@
+THREADS - lesson4
+
+INTRODUÇÃO TEÓRICA:
+
+POSIX threads
+(pthread_t)
+
+usar funções para ações respetivas, como por exemplo um simples '==', não o usar, mas usar sim o
+pthreads_equal
+
+POSIX threads:
+
+! - destaque
+
+pthread_t	  |	pthread_mutex_t		  |	pthread_cond_t
+pthread_create	  |	pthread_mutex_init	! | 	pthread_cond_init
+pthread_self	  |	pthread_mutex_destroy	  |	pthread_cond_destroy
+pthread_equal	  |	pthread_mutex_lock	! |	pthread_cond_wait
+pthread_exit	  |	pthread_mutex_unlock	! |	pthread_cond_signal	X
+pthread_detach	  |	pthread_mutex_trylock	  |	pthread_cond_broadcast  !
+pthread_join	  |				  |
+
+pthread_kill (perigoso, apenas para o training exercise 1)
+
+threads não tem pais e filhos ao contrário de forks, por muiot que estes possam ser programados
+
+por omissão, uma thread ao ser criada é attachable ("joinable")
+caso se queira que não o seja temos de chamar o detach (ig)
+
+por omissão, as threads partilham o espaço de endereçamento
+
+para existir comunicação entre si é necessário existir sincronização
+problemas de sincronização nos forks / processos:
+	1 - as operações na FIFO tem de ser feita de forma atómica (resolvido com semáforos binários)
+	2 - ..  
+	
+Nas threads temos um sistema de mutex para garantir esta sincronização.
+O que é? um tipo de dados opaco (não interessa, é pthread_mutex_t)
+	o pthread_mutex_lock bloqueia e faz exclusão até ser feito o pthread_mutex_unlock
+(mais eficiente e simples que o semáforo alegadamente, mas o semáforo acho que também pode ser utilizado)
+
+pthread_cond_t
+uma variável de condição tem UM e UM SÓ (umbilicalmente) mutex associado (e precisa de ter [??]), enquanto que um mutex pode ter várias variáveis de condição associadas a ele. 
+
+pthread_mutex_lock
+(dentro do lock)
+	enquanto a fila estiver vazia, pthread_cond_wait
+	o broadcast só sinaliza a variável de condição
+	signal
+	
+considerar o broadcast como otimização do signal (o signal é "perigoso")
+	
+habitualmente [padrão habitual], após o broadcast faz-se o unlock
+
+(ver manual p confirmar) o pthread_cond_wait recebe um mutex e uma variável de condição
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+TRAINING EXERCISE 1
+
+	no training exercise 1, substituímos o join pelo pthread_kill, mas esta solução é má e perigosa, pois pode não deixar os consumidores completarem a sua atividade
+
+
+TRAINING EXERCISE 2
+
+nota: um próprio return da função já faz com que a thread termine
+
+	adição de um dummy por cada consumidor à FIFO, e no código do consumidor, ao acontecer uma race condition, terminar a thread (ele proprio) - o pthread_exit é o proprio thread a terminar se
+
