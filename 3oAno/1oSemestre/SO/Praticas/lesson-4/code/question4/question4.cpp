@@ -11,6 +11,20 @@
 #include "thread.h"
 #include "fifo.h"
 
+// struct BUFFER {
+//     char str[MAX_STR_LEN + 1];
+//     int numCh..
+//     int numDig;
+//     int NumLet;
+// }
+
+// struct para usar com processos
+// struct AllData {
+//     Fifo freeBuf;
+//     Fifo pendingReq;
+//     BUFFER pool[N];
+// }
+
 int main (int argc, char *argv[]) {
-    // rip 
+
 }

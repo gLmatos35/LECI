@@ -1,0 +1,166 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            9a:da:ee:04:5e:96:e1:27:6a:57:20:38:a2:72:31:33
+        Signature Algorithm: sha384WithRSAEncryption
+        Issuer: C = NL, O = GEANT Vereniging, CN = GEANT OV RSA CA 4
+        Validity
+            Not Before: May 21 00:00:00 2024 GMT
+            Not After : May 21 23:59:59 2025 GMT
+        Subject: C = PT, ST = Aveiro, O = Universidade de Aveiro, CN = www.ua.pt
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:a8:21:6a:09:0e:23:31:6d:80:cf:17:92:ed:d2:
+                    22:94:ca:f6:fa:72:b3:0b:1d:26:ae:e2:e8:0a:97:
+                    3f:ac:a1:87:3b:30:85:bb:83:ee:2d:6a:2a:8a:9b:
+                    6b:c4:ee:75:3d:85:0e:82:b1:8f:49:2b:7c:83:e4:
+                    fa:d8:99:01:7b:a7:a5:d2:6e:06:9f:fd:e3:d0:69:
+                    c4:04:ea:1d:2b:49:db:10:2a:28:0e:a3:f4:18:2f:
+                    a2:d3:1e:3d:c6:f2:48:0e:36:0e:b5:21:af:11:63:
+                    0e:4c:86:64:3f:d9:01:03:eb:37:e7:a7:db:3b:1a:
+                    53:34:2c:87:77:31:03:84:b7:40:d3:45:01:cc:99:
+                    37:f9:3d:11:af:a9:bb:c8:1b:6d:dd:3d:cb:ee:ed:
+                    45:1b:78:b9:da:46:2b:5c:bb:ca:f2:d9:f5:49:98:
+                    2d:16:e1:58:93:a5:d1:cd:c6:dd:bb:41:d9:17:ee:
+                    5a:98:d1:d8:27:11:fa:64:3d:37:ce:3d:2e:bd:2c:
+                    b5:50:9f:56:e9:7d:53:c1:66:19:19:ba:3f:9c:ad:
+                    59:00:2d:da:d2:52:e0:27:81:08:ec:84:05:07:cd:
+                    ce:8f:3e:a1:12:0c:cd:c1:9b:2a:f2:fa:44:3c:ee:
+                    b9:e6:91:39:53:fe:18:2b:4d:02:e9:ec:ac:02:13:
+                    9f:19
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Authority Key Identifier: 
+                6F:1D:35:49:10:6C:32:FA:59:A0:9E:BC:8A:E8:1F:95:BE:71:7A:0C
+            X509v3 Subject Key Identifier: 
+                6A:83:D0:AC:D9:6F:2B:AD:88:5A:17:AE:5A:2F:45:DF:00:F9:C2:4B
+            X509v3 Key Usage: critical
+                Digital Signature, Key Encipherment
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication, TLS Web Client Authentication
+            X509v3 Certificate Policies: 
+                Policy: 1.3.6.1.4.1.6449.1.2.2.79
+                  CPS: https://sectigo.com/CPS
+                Policy: 2.23.140.1.2.2
+            X509v3 CRL Distribution Points: 
+                Full Name:
+                  URI:http://GEANT.crl.sectigo.com/GEANTOVRSACA4.crl
+            Authority Information Access: 
+                CA Issuers - URI:http://GEANT.crt.sectigo.com/GEANTOVRSACA4.crt
+                OCSP - URI:http://GEANT.ocsp.sectigo.com
+            X509v3 Subject Alternative Name: 
+                DNS:www.ua.pt, DNS:ua.pt
+            CT Precertificate SCTs: 
+                Signed Certificate Timestamp:
+                    Version   : v1 (0x0)
+                    Log ID    : CF:11:56:EE:D5:2E:7C:AF:F3:87:5B:D9:69:2E:9B:E9:
+                                1A:71:67:4A:B0:17:EC:AC:01:D2:5B:77:CE:CC:3B:08
+                    Timestamp : May 21 10:52:54.607 2024 GMT
+                    Extensions: none
+                    Signature : ecdsa-with-SHA256
+                                30:45:02:20:4D:0A:B3:75:CA:10:60:26:92:8B:D3:19:
+                                90:FD:DB:5E:64:DA:35:B2:36:8C:32:D2:EB:D2:3A:B3:
+                                8D:F2:2A:08:02:21:00:BE:DE:C5:71:C4:1A:8A:02:8E:
+                                1D:3B:A5:25:61:46:44:7D:22:6B:58:11:7F:29:3E:E8:
+                                62:13:1A:BD:DD:68:06
+                Signed Certificate Timestamp:
+                    Version   : v1 (0x0)
+                    Log ID    : A2:E3:0A:E4:45:EF:BD:AD:9B:7E:38:ED:47:67:77:53:
+                                D7:82:5B:84:94:D7:2B:5E:1B:2C:C4:B9:50:A4:47:E7
+                    Timestamp : May 21 10:52:54.530 2024 GMT
+                    Extensions: none
+                    Signature : ecdsa-with-SHA256
+                                30:45:02:21:00:DF:3D:FD:7E:D3:DB:1A:8C:5A:7D:39:
+                                32:F0:74:24:79:06:55:26:70:CA:9F:00:BD:C9:F2:B6:
+                                6F:27:F1:55:3F:02:20:63:FB:44:0E:97:2E:E3:11:1B:
+                                CD:91:F6:4F:72:12:C5:A5:5C:81:65:3B:53:94:73:21:
+                                7C:C2:EB:78:02:5D:E5
+                Signed Certificate Timestamp:
+                    Version   : v1 (0x0)
+                    Log ID    : 4E:75:A3:27:5C:9A:10:C3:38:5B:6C:D4:DF:3F:52:EB:
+                                1D:F0:E0:8E:1B:8D:69:C0:B1:FA:64:B1:62:9A:39:DF
+                    Timestamp : May 21 10:52:54.503 2024 GMT
+                    Extensions: none
+                    Signature : ecdsa-with-SHA256
+                                30:45:02:20:6D:D4:F9:56:18:5B:39:18:5B:E4:46:6E:
+                                AF:5C:C1:52:CC:CA:30:D7:0C:31:63:FC:28:F6:B3:67:
+                                FC:44:93:B5:02:21:00:A6:10:CB:99:A2:15:D7:B4:FE:
+                                2D:34:28:2B:85:3F:65:4D:47:86:83:65:B4:E1:F6:C2:
+                                34:4F:4D:EB:B9:C7:78
+    Signature Algorithm: sha384WithRSAEncryption
+    Signature Value:
+        6f:b0:b7:00:87:01:a5:e0:46:fe:59:3a:5d:a6:4e:0c:3c:23:
+        83:e0:14:38:38:7f:b7:a7:44:28:7d:df:9e:d8:a4:94:a2:c2:
+        74:89:6d:b9:71:27:8f:b2:44:26:d5:c2:db:08:33:06:bc:6d:
+        d7:90:65:da:6a:83:87:dc:79:2b:89:10:ad:e5:2c:31:6d:49:
+        9b:34:25:94:36:34:51:0a:05:bb:0c:7d:e2:72:69:16:29:b5:
+        f1:f6:b8:9d:55:d5:4b:16:09:38:af:24:99:65:ee:c2:59:f6:
+        b7:d7:1d:86:3b:ba:c8:1c:2a:6e:6d:56:12:71:16:03:87:33:
+        1e:f7:5a:40:7c:9c:2b:e8:f6:f3:3f:1a:dd:67:3e:17:30:c0:
+        82:46:dd:c0:51:fb:ef:37:07:11:c6:d0:39:23:ad:bd:3a:2e:
+        84:c8:cb:d2:4d:e2:32:61:0f:25:ac:9c:c0:39:29:2c:45:e1:
+        80:1e:1f:f5:5b:f4:3c:ba:fd:13:08:12:ba:13:b4:50:2f:4c:
+        a1:bc:12:46:08:95:14:99:09:23:62:e0:05:60:46:d7:b4:08:
+        78:34:a2:0e:1a:61:ed:e6:05:7e:f1:38:a4:2d:dc:8b:9a:c1:
+        04:d1:2d:55:dd:5b:d0:8e:82:33:54:43:22:95:71:85:de:38:
+        80:49:6e:c4:3d:e4:43:c0:3d:5e:04:ab:3e:23:0d:3c:02:b0:
+        61:55:25:96:22:b7:0c:f6:62:fc:dc:fd:75:84:8a:ef:4e:1c:
+        42:d7:b4:5d:97:39:3b:98:42:08:f6:45:89:e8:e2:4f:e7:c9:
+        12:14:53:68:ac:96:76:ce:21:6d:a5:1a:e3:02:64:0b:25:eb:
+        bb:ea:c1:24:53:f7:2a:71:45:70:96:42:27:ff:1a:dd:16:58:
+        f8:d5:5f:fe:15:fd:c7:14:72:9b:9a:a8:c4:7d:4b:ac:70:ef:
+        ea:73:2a:d2:16:d0:44:53:ff:39:11:41:85:30:9b:b3:17:7d:
+        8b:59:61:90:27:c4:05:db:4e:eb:6f:2c:91:3c:83:5e:80:9a:
+        26:0c:bb:58:bf:b1:c6:08:e1:c4:2a:ec:32:76:e5:ee:80:22:
+        bb:77:08:7f:4e:0f:20:9c:b4:ec:1a:71:48:d6:0c:3a:ac:64:
+        b7:67:87:fa:93:74:7a:64:7a:cb:4a:3a:09:4a:31:90:90:c4:
+        92:db:ac:55:2e:c1:e3:b5:11:46:ef:11:ca:af:09:42:91:ce:
+        36:63:0f:1b:0c:8a:06:32:80:9a:1e:7f:c6:5a:d7:31:2a:39:
+        30:82:a4:36:5c:db:c0:a5:11:c4:78:b1:0a:19:a8:13:07:6e:
+        50:b9:2f:32:b9:46:0f:a5
+-----BEGIN CERTIFICATE-----
+MIIHRzCCBS+gAwIBAgIRAJra7gReluEnalcgOKJyMTMwDQYJKoZIhvcNAQEMBQAw
+RDELMAkGA1UEBhMCTkwxGTAXBgNVBAoTEEdFQU5UIFZlcmVuaWdpbmcxGjAYBgNV
+BAMTEUdFQU5UIE9WIFJTQSBDQSA0MB4XDTI0MDUyMTAwMDAwMFoXDTI1MDUyMTIz
+NTk1OVowUzELMAkGA1UEBhMCUFQxDzANBgNVBAgTBkF2ZWlybzEfMB0GA1UEChMW
+VW5pdmVyc2lkYWRlIGRlIEF2ZWlybzESMBAGA1UEAxMJd3d3LnVhLnB0MIIBIjAN
+BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqCFqCQ4jMW2AzxeS7dIilMr2+nKz
+Cx0mruLoCpc/rKGHOzCFu4PuLWoqiptrxO51PYUOgrGPSSt8g+T62JkBe6el0m4G
+n/3j0GnEBOodK0nbECooDqP0GC+i0x49xvJIDjYOtSGvEWMOTIZkP9kBA+s356fb
+OxpTNCyHdzEDhLdA00UBzJk3+T0Rr6m7yBtt3T3L7u1FG3i52kYrXLvK8tn1SZgt
+FuFYk6XRzcbdu0HZF+5amNHYJxH6ZD03zj0uvSy1UJ9W6X1TwWYZGbo/nK1ZAC3a
+0lLgJ4EI7IQFB83Ojz6hEgzNwZsq8vpEPO655pE5U/4YK00C6eysAhOfGQIDAQAB
+o4IDIzCCAx8wHwYDVR0jBBgwFoAUbx01SRBsMvpZoJ68iugflb5xegwwHQYDVR0O
+BBYEFGqD0KzZbyutiFoXrlovRd8A+cJLMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMB
+Af8EAjAAMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBJBgNVHSAEQjBA
+MDQGCysGAQQBsjEBAgJPMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGlnby5j
+b20vQ1BTMAgGBmeBDAECAjA/BgNVHR8EODA2MDSgMqAwhi5odHRwOi8vR0VBTlQu
+Y3JsLnNlY3RpZ28uY29tL0dFQU5UT1ZSU0FDQTQuY3JsMHUGCCsGAQUFBwEBBGkw
+ZzA6BggrBgEFBQcwAoYuaHR0cDovL0dFQU5ULmNydC5zZWN0aWdvLmNvbS9HRUFO
+VE9WUlNBQ0E0LmNydDApBggrBgEFBQcwAYYdaHR0cDovL0dFQU5ULm9jc3Auc2Vj
+dGlnby5jb20wGwYDVR0RBBQwEoIJd3d3LnVhLnB0ggV1YS5wdDCCAX4GCisGAQQB
+1nkCBAIEggFuBIIBagFoAHYAzxFW7tUufK/zh1vZaS6b6RpxZ0qwF+ysAdJbd87M
+OwgAAAGPmshhzwAABAMARzBFAiBNCrN1yhBgJpKL0xmQ/dteZNo1sjaMMtLr0jqz
+jfIqCAIhAL7exXHEGooCjh07pSVhRkR9ImtYEX8pPuhiExq93WgGAHYAouMK5EXv
+va2bfjjtR2d3U9eCW4SU1yteGyzEuVCkR+cAAAGPmshhggAABAMARzBFAiEA3z39
+ftPbGoxafTky8HQkeQZVJnDKnwC9yfK2byfxVT8CIGP7RA6XLuMRG82R9k9yEsWl
+XIFlO1OUcyF8wut4Al3lAHYATnWjJ1yaEMM4W2zU3z9S6x3w4I4bjWnAsfpksWKa
+Od8AAAGPmshhZwAABAMARzBFAiBt1PlWGFs5GFvkRm6vXMFSzMow1wwxY/wo9rNn
+/ESTtQIhAKYQy5miFde0/i00KCuFP2VNR4aDZbTh9sI0T03rucd4MA0GCSqGSIb3
+DQEBDAUAA4ICAQBvsLcAhwGl4Eb+WTpdpk4MPCOD4BQ4OH+3p0Qofd+e2KSUosJ0
+iW25cSePskQm1cLbCDMGvG3XkGXaaoOH3HkriRCt5SwxbUmbNCWUNjRRCgW7DH3i
+cmkWKbXx9ridVdVLFgk4rySZZe7CWfa31x2GO7rIHCpubVYScRYDhzMe91pAfJwr
+6PbzPxrdZz4XMMCCRt3AUfvvNwcRxtA5I629Oi6EyMvSTeIyYQ8lrJzAOSksReGA
+Hh/1W/Q8uv0TCBK6E7RQL0yhvBJGCJUUmQkjYuAFYEbXtAh4NKIOGmHt5gV+8Tik
+LdyLmsEE0S1V3VvQjoIzVEMilXGF3jiASW7EPeRDwD1eBKs+Iw08ArBhVSWWIrcM
+9mL83P11hIrvThxC17Rdlzk7mEII9kWJ6OJP58kSFFNorJZ2ziFtpRrjAmQLJeu7
+6sEkU/cqcUVwlkIn/xrdFlj41V/+Ff3HFHKbmqjEfUuscO/qcyrSFtBEU/85EUGF
+MJuzF32LWWGQJ8QF207rbyyRPINegJomDLtYv7HGCOHEKuwyduXugCK7dwh/Tg8g
+nLTsGnFI1gw6rGS3Z4f6k3R6ZHrLSjoJSjGQkMSS26xVLsHjtRFG7xHKrwlCkc42
+Yw8bDIoGMoCaHn/GWtcxKjkwgqQ2XNvApRHEeLEKGagTB25QuS8yuUYPpQ==
+-----END CERTIFICATE-----

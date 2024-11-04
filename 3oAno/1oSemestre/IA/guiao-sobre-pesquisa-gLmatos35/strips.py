@@ -95,7 +95,11 @@ class STRIPS(SearchDomain):
     # Result of a given "action" in a given "state"
     # ( returns None, if the action is not applicable in the state)
     def result(self, state, action):
-        pass
+## ex 1
+        newstate = [ c for c in state if c not in action.neg ]
+        newstate.extend(action.pos)
+        return set(newstate)        # importante ser um set e nao uma lista para
+                                    # ser independente da ordem das condições
 
     def cost(self, state, action):
         return 1
@@ -105,7 +109,8 @@ class STRIPS(SearchDomain):
 
     # Checks if a given "goal" is satisfied in a given "state"
     def satisfies(self, state, goal):
-        pass
+## ex 1
+        return all(c in state for c in goal)
 
 
 

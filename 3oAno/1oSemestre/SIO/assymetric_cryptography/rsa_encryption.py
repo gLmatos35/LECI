@@ -1,5 +1,6 @@
+import sys
 from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives import serialization, hashes
+from cryptography.hazmat.primitives import serialization
 
 message = b"o boia esta a dar em louco"
 
@@ -15,3 +16,6 @@ ciphertext = public_key.encrypt(
 
 with open("encryptedFile.txt", "wb") as encryptedFile:
     encryptedFile.write(ciphertext)
+
+# if __name__ == "__main__":
+    

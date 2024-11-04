@@ -1,0 +1,53 @@
+./urgency -h		-> opçoes de exec
+
+o file inicialmente já é compilável e executável, por muito que esteja errado
+	está inserido um dummy (com comentarios a indicar que é para ser removido) apenas p mostrar a exec esperada do programa
+	inicialmente, o nurse e o medico são o proprio paciente
+	
+	
+(guiao do elearning - concurrent programming with threads, mutexes & conditional variables)
+
+1.	
+uma entidade ativa é algo que executa e que tem a si associado um programa concorrente com outras entidades ativas
+	neste caso, são:
+		- main (o proprio programa é uma entidade ativa)
+		- pacient
+		- nurse
+		- doctor
+		
+o fifo é uma entidade passiva, não ativa
+
+2.
+módulo partilhado:
+	- pfifo
+2.1	
+exclusao mutua - atomicidade
+	ver na pfifo.h as 6 funçoes publicas
+		- as primeiras 2 não precisam de ser atualizadas (..)
+		- assim, as 4 ultimas funções são a região critica em que temos de garantir atomicidade nas operações
+
+2.2
+so podemos retirar um elemento da fila quando ela nao está vazia - condição condicional
+
+nota: (o wait liberta o mtx no fim)
+
+
+usar por omissão o broadcast sempre em favor do signal (este 2o pode falhar)
+	o signal so faz sentido usar quando há varios à espera
+	- nestes casos, como ou vamos notificar 0 ou 1, mais vale usar o broadcast (todos acordam tho)
+
+
+	Sincronização interna - mutex
+	Sincronização condicional - cond
+
+3.
+comunicação direta entre EA:
+	- doctor -> pacient
+
+
+
+
+grande vantagem de threads, para alem da implementação é o uso do debugger para depuração do codigo caso bloqueie em algum lado.
+aprender a usar debugger será clutch ngl
+
+"sempre lock / unlock, não é negociavel"

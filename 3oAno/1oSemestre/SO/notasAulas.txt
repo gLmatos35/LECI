@@ -104,3 +104,34 @@ while(!fifoIsEmpty());		// esperar que a fifo fique vazia
 // terminar entao o programa quando esse dummy item for recebido
 
 // injetar os dummies num ciclo à parte
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// LESSON 4 - threads
+
+aprender a usar o gdb para debug e acompanhamento da criaçao de threads
+
+
+question4 - para efetuar a comunicação de servidor-cliente..
+
+    com semaforo, basta ter um semaforo por cada buffer, cliente faz down, servidor faz up
+
+    com threads..
+    int done;       // variavel int
+    thread_cond_t cnd;
+    thread_mutex_t mtx;
+
+    isto acho que no cliente..
+    enquanto nao estiver done, wait (lock?)
+
+    server
+    done = 1
+    broadcast
+    unlock
+
+
+
+

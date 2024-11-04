@@ -62,7 +62,7 @@ class SearchProblem:
 
 # Nos de uma arvore de pesquisa
 class SearchNode:
-    def __init__(self,state,parent, cost=0, heuristic=0): 
+    def __init__(self,state,parent, cost=0, heuristic=0, action=None): 
         self.state = state
         self.parent = parent
 ## ex 8 - modificado também o parâmetro de entrada
@@ -71,6 +71,8 @@ class SearchNode:
         self.depth = 0 if parent==None else parent.depth+1
 ## ex 12 - modificado também o parâmetro de entrada      
         self.heuristic = heuristic
+## ex 2 de STRIPS - modificado também o parâmetro de entrada
+        self.action = action
     def __str__(self):
         return "no(" + str(self.state) + "," + str(self.parent) + ")"
     def __repr__(self):
@@ -88,6 +90,8 @@ class SearchTree:
         self.solution = None
         self.highest_cost_nodes = [root]
         self.average_depth = 0
+## ex 2 STRIPS        
+        self.plan=[]
         
     # obter o caminho (sequencia de estados) da raiz ate um no
     def get_path(self,node):
@@ -96,6 +100,14 @@ class SearchTree:
         path = self.get_path(node.parent)
         path += [node.state]
         return(path)
+
+## ex 2 STRIPS
+    def get_plan(self,node):
+        if node.parent == None:
+            return []
+        plan = self.get_plan(node.parent)
+        plan.append(node.action)
+        return(plan)
 
     # procurar a solucao
     def search(self, limit=None):
@@ -111,7 +123,9 @@ class SearchTree:
                 # na property do ex 3
                 self.solution = node
 ## ex 5
-                self.terminals = len(self.open_nodes) + 1 # len da lista de nodes terminais + o node final [?]
+                self.terminals = len(self.open_nodes) + 1 # len da lista de nodes terminais + o node final
+## ex 2 STRIPS                
+                self.plan = self.get_plan(node)
                 return self.get_path(node)
 ## ex 5 - após serem removidos da lista de nodes, são considerados nodes não terminais
             self.non_terminals += 1
@@ -130,7 +144,8 @@ class SearchTree:
 ## a heurística é a distância entre os pontos inicial e final
 ## passar o valor de heuristica tambem na criaçao no newnode
                     heuristicVal = self.problem.domain.heuristic(newstate, self.problem.goal)
-                    newnode = SearchNode(newstate,node,newCost,heuristicVal)
+## passar o valor de action na criaçao de newnode (ex 2 STRIPS)
+                    newnode = SearchNode(newstate,node,newCost,heuristicVal,a)
                     lnewnodes.append(newnode)
 ## ex 15
                     if newnode.cost > self.highest_cost_nodes[0].cost:
