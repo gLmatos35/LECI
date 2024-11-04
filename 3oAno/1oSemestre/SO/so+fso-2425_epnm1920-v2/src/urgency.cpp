@@ -123,7 +123,7 @@ void term_simulation(int np) {
       cond_destroy(&(hd->all_patients[i].isDone));
       mutex_destroy(&(hd->all_patients[i].mtx));
    }
-// 
+// not sure if right //
 
 }
 
@@ -136,6 +136,13 @@ int nurse_iteration(int id) // return value can be used to request termination
    printf("\e[34;01mNurse %d: get next patient\e[0m\n", id);
    int patient = retrieve_pfifo(&hd->triage_queue);
    // TODO point: PUT YOUR NURSE TERMINATION CODE HERE:
+
+// added
+   if (patient == -1) {
+      //...
+   }
+// - not sure what to do here**
+
    check_valid_patient(patient);
    printf("\e[34;01mNurse %d: evaluate patient %d priority\e[0m\n", id, patient);
    int priority = random_manchester_triage_priority();
@@ -186,8 +193,8 @@ void patient_wait_end_of_consultation(int id)
 void patient_life(int id)
 {
    patient_goto_urgency(id);
-   nurse_iteration(0);  // TODO point: to be commented/deleted in concurrent version
-   doctor_iteration(0); // TODO point: to be commented/deleted in concurrent version
+   // nurse_iteration(0);  // TODO point: to be commented/deleted in concurrent version
+   // doctor_iteration(0); // TODO point: to be commented/deleted in concurrent version
    patient_wait_end_of_consultation(id);
    memset(&(hd->all_patients[id]), 0, sizeof(Patient)); // patient finished
 }
@@ -195,6 +202,13 @@ void patient_life(int id)
 /* ************************************************* */
 
 // TODO point: if necessary, add extra functions here:
+
+void *patientThread (void* arg) {
+
+   return NULL
+}
+
+
 
 /* ************************************************* */
 

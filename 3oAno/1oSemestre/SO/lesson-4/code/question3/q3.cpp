@@ -12,7 +12,7 @@ pthread_mutex_t mtx;
 pthread_cond_t cnd[2];
 
 void *childThread(void *arg) {
-	int thrID = *(int*)arg;		 // counter
+	int thrID = *(int*)arg;
 
 	while(true) {
 		mutex_lock(&mtx);
@@ -35,7 +35,7 @@ void *childThread(void *arg) {
 		mutex_unlock(&mtx);
 	}
 
-    return 0;
+    return NULL;
 }
 
 int main (int argc, char *argv[]) {

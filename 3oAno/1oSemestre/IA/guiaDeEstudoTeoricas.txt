@@ -1,9 +1,0 @@
-Introdução a programação declarativa (2)
-
-Programação ao estilo funcional (3)
-
-Trees e tipos de pesquisa em trees (4 -> 110 a 126) [ainda nada de grafos]
-
-Agentes e tipos de arquitetura de agentes (4 -> slides 0 a 30);
-
-Strips e heurísticas (4 -> 136 a ..)
