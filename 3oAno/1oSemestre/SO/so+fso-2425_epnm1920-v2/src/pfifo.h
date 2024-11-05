@@ -38,7 +38,8 @@ typedef struct
    
    // added
    pthread_mutex_t mtx;	
-   pthread_cond_t cvar[2];
+   // pthread_cond_t cvar[2];
+   pthread_cond_t notFull, notEmpty;
    //
 
 } PriorityFIFO;

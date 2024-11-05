@@ -6,3 +6,58 @@ Complexidade espacial da pesquisa de custo uniforme?
 	
 Pesquisa gulosa é um caso particular da pesquisa A*?
 	- como a pesquisa gulosa ignora totalmente o custo acumulado, não pode ser considerada verdadeiramente um caso particular da pesquisa A*, ainda que sendo uma variante desta pesquisa.
+
+
+As linguagens logicas sao linguagens com que particularidade?
+    - têm capacidade de inferência
+
+Quais as conectivas logicas utilizadas em logica proposicional e logica de primeira ordem?
+    - conjunção, implicação, disjunção, negação, ...
+
+Uma das Leis de De Morgan
+    - (A ∧ B) = ~A ∨ ~B
+
+O que é uma interpretação de uma formula em logica proposicional 
+    - atribuiçao de valores a variaveis / proposições
+
+Quando é que um sistema de inferência pode ser considerado completo
+    - quando é possivel derivar todas as consequências logicas
+        ex ~p V p
+
+Exemplo de uma regra de substituição
+    - ~(~p) = p
+
+Exemplo de uma regra de inferência
+    - Modus Ponens:
+    1. p -> q
+    2. p
+    3. Entao, q
+
+O que é uma tautologia?
+    - é uma proposição lógica que é verdadeira em todas as interpretações possiveis, independentemente dos valores verdadeiros das variaveis envolvidas
+
+Qual a diferença entre formula normal conjuntiva e forma clausal
+    - a forma clausal é uma simplificação da FNC, listando apenas as cláusulas como conjunto de literais, sem notação dos conectivos logicos
+
+Quando é que um sistema de inferencia pode ser considerado correto?
+    - quando não produz conclusões falsas a partir de premissas verdadeiras
+
+Enuncie a regra da resolução entre duas fórmulas lógicas
+    - (A V B, ~B V C) / (A V C)
+    dado:
+    1. A V B
+    2. ~B V C
+    3. podemos retirar daqui A V C
+
+No essencial, o que é uma rede semântica
+    - uma rede semantica é um grafo em que os nós representam entidades ou conceitos e as arestas representam relações semânticas
+
+Uma rede semântica é um grafo em que as arestas representam predicados?
+    - Verdadeiro (as arestas podem representar predicados ou relações
+
+Numa rede semântica, quando ocorre cancelamento de herança?
+    - quando uma entidade tem uma propriedade que vai contra/contradiz as propriedades herdadas da sua superclasse 
+        ex: O pinguim não pode voar, apesar de ser uma ave (aves, geralmente podem voar)
+
+
+

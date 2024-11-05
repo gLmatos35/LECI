@@ -17,8 +17,8 @@ void init_pfifo(PriorityFIFO* pfifo)
 
 // added
    mutex_init(&pfifo->mtx, NULL);
-   cond_init(&pfifo->cvar[0], NULL);    // isEmpty
-   cond_init(&pfifo->cvar[1], NULL);    // isFull
+   cond_init(&pfifo->notEmpty, NULL);
+   cond_init(&pfifo->notFull, NULL);
 //
 }
 
@@ -30,6 +30,11 @@ void term_pfifo(PriorityFIFO* pfifo)
    require (pfifo != NULL, "NULL pointer to FIFO");  // a false value indicates a program error
    require (is_closed_pfifo(pfifo), "FIFO open");
 
+// added
+   mutex_destroy(&pfifo->mtx);
+   cond_destroy(&pfifo->notEmpty);
+   cond_destroy(&pfifo->notFull);
+//
 }
 
 /* --------------------------------------- */
@@ -45,7 +50,7 @@ void insert_pfifo(PriorityFIFO* pfifo, int id, int priority)
 // added
    mutex_lock(&pfifo->mtx);
    while (pfifo->is_closed || !full_pfifo(pfifo))
-      cond_wait(&pfifo->cvar[0],&pfifo->mtx);
+      cond_wait(&pfifo->notFull,&pfifo->mtx);
 // 
 
    require (pfifo->is_closed || !full_pfifo(pfifo), "open FIFO is full");  // IMPORTANT: in a shared fifo, it may not result from a program error!
@@ -71,7 +76,7 @@ void insert_pfifo(PriorityFIFO* pfifo, int id, int priority)
       //printf("[insert_pfifo] pfifo->inp=%d, pfifo->out=%d\n", pfifo->inp, pfifo->out);
 
 // added
-      cond_broadcast(&pfifo->cvar[0]);
+      cond_broadcast(&pfifo->notEmpty);
       mutex_unlock(&pfifo->mtx);
 //
    }
@@ -90,7 +95,7 @@ int retrieve_pfifo(PriorityFIFO* pfifo)
 // added
    mutex_lock(&pfifo->mtx);
    while(pfifo->is_closed || !empty_pfifo(pfifo))
-      cond_wait(&pfifo->cvar[0],&pfifo->mtx);   
+      cond_wait(&pfifo->notEmpty,&pfifo->mtx);   
 //
 
 	require (pfifo->is_closed || !empty_pfifo(pfifo), "open FIFO is empty");  // IMPORTANT: in a shared fifo, it may not result from a program error!
@@ -118,7 +123,7 @@ int retrieve_pfifo(PriorityFIFO* pfifo)
    }
 
 // added
-   cond_broadcast(&pfifo->cvar[1]);
+   cond_broadcast(&pfifo->notFull);
    mutex_unlock(&pfifo->mtx);
 //
 
@@ -139,8 +144,8 @@ void close_pfifo(PriorityFIFO* pfifo)
    pfifo->is_closed = 1;
 
 // added   
-   cond_broadcast(&pfifo->cvar[0]);
-   cond_broadcast(&pfifo->cvar[1]);
+   cond_broadcast(&pfifo->notEmpty);
+   cond_broadcast(&pfifo->notFull);
    // casos haja alguma ação de retrieve/insert presa num wait, tira as do loop
    // e avisa que a fifo fechou
    mutex_unlock(&pfifo->mtx);
