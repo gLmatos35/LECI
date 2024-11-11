@@ -37,9 +37,8 @@ typedef struct
    // TODO point: if necessary, add synchronization declarations here
    
    // added
-   pthread_mutex_t mtx;	
-   // pthread_cond_t cvar[2];
-   pthread_cond_t notFull, notEmpty;
+   pthread_mutex_t access;	
+   pthread_cond_t closed_or_notFull, closed_or_notEmpty;
    //
 
 } PriorityFIFO;
