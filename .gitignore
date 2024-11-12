@@ -1,15 +1,18 @@
+# Ignore general binary and intermediate files
 *.elf
 *.hex
 *.map
 *.o
 *.sym
-*.vpp.bak
+*.vpp*
+*.bak*
 
+# Ignore all files by default, except directories and explicitly allowed files
 *
 !*/
 !*.*
 
-# Prerequisites
+# Dependency files
 *.d
 
 # Object files
@@ -18,12 +21,12 @@
 *.o
 *.elf
 
-# Linker output
+# Linker output files
 *.ilk
 *.map
 *.exp
 
-# Precompiled Headers
+# Precompiled headers
 *.gch
 *.pch
 
@@ -33,13 +36,13 @@
 *.la
 *.lo
 
-# Shared objects (inc. Windows DLLs)
+# Shared objects (Linux & Windows shared libraries)
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Executables
+# Executable files
 *.exe
 *.out
 *.app
@@ -53,7 +56,7 @@
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
+# Kernel module compile results
 *.mod*
 *.cmd
 .tmp_versions/
@@ -62,6 +65,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Pycache/Pytest
+# Python cache files
 **/__pycache__/
 *.py[cod]
+
