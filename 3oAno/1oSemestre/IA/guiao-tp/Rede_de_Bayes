@@ -1,0 +1,164 @@
+11.
+
+Variáveis aleatórias independentes
+
+	ST (sc) - sobrecarga de trabalho
+	UPAL (pt) - utilizador está a usar o PAL
+	
+Variáveis aleatórias dependentes
+
+	PA (pa) - precisa de ajuda
+	CP (cp) - cara preocupada
+	CEA (cnl) - correio eletrónico acumulado
+	UR (fr) - uso exagerado do rato
+	
+	
+Topologia da Rede:
+	
+		    ST         UPAL
+	      /	 |        /  | 
+	     /   |       /   |
+	   CEA   |     PA    |   
+	         |    /   \  |
+	   	     |   /	   \ | 
+              CP        UR
+	   
+Probabilidades condicionadas:
+
+	P(ST) = 0.6
+	
+	P(UPAL) = 0.05
+
+	P(CEA | ST)  = 0.90
+	P(CEA | ~ST) = 0.001
+	
+	P(PA | UPAL)  = 0.25
+	P(PA | ~UPAL) = 0.004
+	
+	P(UR | UPAL, PA)   = 0.90
+	P(UR | UPAL, ~PA)  = 0.90
+	P(UR | ~UPAL, PA)  = 0.10
+	P(UR | ~UPAL, ~PA) = 0.01
+	
+	P(CP | ST, PA)   = 0.02
+ 	P(CP | ST, ~PA)  = 0.01
+	P(CP | ~ST, PA)  = 0.011
+	P(CP | ~ST, ~PA) = 0.001
+
+
+
+
+
+
+
+III - ex8
+topologia da rede de bayes:
+
+            a
+            |
+            ↓
+            b
+           / \
+          /   \
+         ↓     ↓
+         c     d
+
+notas:
+p(¬c) = 1 - p(c)
+
+p(¬c | ...) = 1 - p(c | ...)
+_____________________________________________________
+
+p(a ∧ b ∧ ¬c ∧ ¬d)
+
+= p(a) * p(b|a) * (1 - p(c|b)) * (1 - p(d|b))
+
+= 0.2 * 0.3 * (1 - 0.2) * (1 - 0.1)
+
+= 0,0432
+
+
+
+
+
+
+
+IV - ex6
+nota: cada restrição é uma função de 4 argumentos
+
+Variáveis:
+    x_i,j , i = 1 .. 9, j = 1 .. 9
+
+Dominios:
+    x_i,j ∈ {1 .. 9}
+
+Restrições Unárias:
+    x_4,1 = 5,  x_6,1 = 7,  x_9,1 = 3,
+    x_3,2 = 5,  x_7,2 = 8,  x_9_2 = 2,
+    ...............
+
+Restrições Binárias:
+    r(v1,x1,v2,x2): x1 != x2
+
+    para cada x_ij e x_ik, i = 1..9, j = 1..9, k = 1..9:
+        aplica-se a restrição r
+    para cada x_ij e x_kj, i = 1..9, j = 1..9, k = 1..9:
+        aplica-se a restrição r
+    para cada x_ij e x_kl, i = 1..9, j = 1..9, k = 1..9:
+        se (i-1)/3 == (k-1)/3 e (j-1)/3 == (l-1)/3:
+            aplica-se a restrição r
+
+Restrições de Ordem Superior:
+?
+
+
+
+
+
+
+IV - ex8
+grafo de restrições:
+
+          B
+        / | \
+      /   |   \
+    A     |     D
+      \   |   /
+        \ | /
+          C
+
+(restrição 1)
+# tarefa t1 termina antes de t2 começar
+r1(t1,h1,t2,h2):    h1 + duração(t1) <= h2
+
+# tarefa t1 e tarefa t2 não podem ser realizadas simultâneamente
+f2(t1,h1,t2,h2):    ...
+
+
+IV - ex14
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
