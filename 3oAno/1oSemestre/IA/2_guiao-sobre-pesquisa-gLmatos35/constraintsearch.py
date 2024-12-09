@@ -16,6 +16,19 @@ class ConstraintSearch:
         self.constraints = constraints
         self.calls = 0
 
+    def ConstraintPropagation(self, constraint_graph, edge_queue):
+        queue = edge_queue[:]
+        while queue != []:
+            x1, x2 = queue.pop(0)
+            constraint = constraint_graph[x1,x2]
+            
+            novodom = [ x for x in self.domains[x1]
+                       if any(constraint(x1,x,x2,y)) for y in self.domains[x2]]
+            
+            if len(novodom) < len(self.domans[x1]):
+                self.domains[x1] = novodom
+                queue.extend([a for a in constraint_graph if a[1] == x1])
+            
     # domains é um dicionário com os domínios actuais
     # de cada variável
     # ( ver acetato "Pesquisa com propagacao de restricoes
