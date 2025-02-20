@@ -1,3 +1,7 @@
+!SO/
+!SO/**
+!*.txt
+
 # Ignore general binary and intermediate files
 *.elf
 *.hex
@@ -6,11 +10,6 @@
 *.sym
 *.vpp*
 *.bak*
-
-# Ignore all files by default, except directories and explicitly allowed files
-*
-!*/
-!*.*
 
 # Dependency files
 *.d

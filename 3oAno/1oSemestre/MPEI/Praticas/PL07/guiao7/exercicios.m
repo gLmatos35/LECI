@@ -1,0 +1,460 @@
+
+
+udata = load('u.data'); % Carrega o ficheiro dos dados dos filmes
+% Fica apenas com as duas primeiras colunas
+u = udata(1:end,1:2); clear udata;
+
+% Lista de utilizadores
+users = unique(u(:,1)); % Extrai os IDs dos utilizadores
+Nu = length(users); % Numero de utilizadores
+
+% Constroi a lista de filmes para cada utilizador
+
+Set = cell(Nu,1); % Usa celulas
+
+for n = 1:Nu % Para cada utilizador
+
+    % Obtem os filmes de cada um
+    ind = find(u(:,1) == users(n));
+
+    % E guarda num array. Usa células porque utilizador tem um numero
+    % diferente de filmes. Se fossem iguais podia ser um array
+
+    Set{n} = [Set{n} u(ind,2)];
+end
+
+
+J=zeros(Nu,Nu); % array para guardar distancias
+h= waitbar(0,'Calculating');
+for n1 = 1:Nu
+    waitbar(n1/Nu,h);
+    for n2 = n1+1:Nu
+        
+        C1 = intersect(Set{n1},Set{n2});
+        C2 = union(Set{n1},Set{n2});
+        simJ = length(C1)/length(C2);
+        J(n1,n2) = 1 - simJ;
+    end
+end
+delete (h)
+
+threshold = 0.4; % limiar de decisao
+% Array para guardar pares similares (user1, user2, distancia)
+SimilarUsers= zeros(1,3);
+k= 1;
+for n1 = 1:Nu
+    for n2 = n1+1:Nu
+        if J(n1,n2) < threshold
+            SimilarUsers(k,:) = [users(n1) users(n2) J(n1,n2)];
+            k= k+1;
+        end
+    end
+end
+
+save("jaccard.mat", "J");
+
+%% 
+
+function [movies,users] = conjuntoFilmes(filepath)
+    
+
+    udata = load(filepath); 
+
+    u = udata(1:end,1:2); clear udata;
+
+    users = unique(u(:,1)); % Extrai os filmes dos utilizadores
+    Nu = length(users); % Numero de utilizadores
+    movies = cell(Nu,1); % Usa celulas
+
+    for n = 1:Nu % Para cada utilizador
+
+        % Obtem os filmes de cada um
+        ind = find(u(:,1) == users(n));
+
+        % E guarda num array. Usa células porque utilizador tem um numero
+        % diferente de filmes. Se fossem iguais podia ser um array
+
+        movies{n} = [movies{n} u(ind,2)];
+    end
+
+end
+
+function J = distanciaJakar(movies)
+    % Calcula a matriz de distância de Jaccard para os utilizadores
+    Nu = length(movies); % Número de utilizadores
+    J = zeros(Nu, Nu); % Inicializa a matriz de distâncias
+
+    for n1 = 1:Nu
+        for n2 = n1+1:Nu
+            % Calcula a interseção e união dos conjuntos
+            C1 = intersect(movies{n1}, movies{n2});
+            C2 = union(movies{n1}, movies{n2});
+            % Calcula a distância de Jaccard
+            simJ = length(C1) / length(C2);
+
+            J(n1, n2) = 1 - simJ;
+        end
+    end
+end
+
+
+function SimilarUsers = encontrarParesSimilares(J, users, threshold)
+
+    SimilarUsers= zeros(1,3);
+    k = 1;
+
+    Nu = length(users);
+    for n1 = 1:Nu
+        for n2 = n1+1:Nu
+            if J(n1, n2) < threshold
+                SimilarUsers(k, :) = [users(n1), users(n2), J(n1, n2)];
+                k = k + 1;
+            end
+        end
+    end
+end
+
+
+%%[movies, users] = conjuntoFilmes('u.data');
+
+%Nu = length(users); 
+%randomUsers = randi(Nu, 1, 100); 
+
+%moviesSubset = movies(randomUsers);
+
+%%J = distanciaJakar(moviesSubset);
+
+%%threshold = 0.4;
+
+%%SimilarUsers = encontrarParesSimilares(J, users(randomUsers), threshold);
+
+%%disp('Pares de utilizadores similares:');
+%%disp(SimilarUsers);
+
+
+% fazer agora, com o set todo
+
+%%[movies, users] = conjuntoFilmes('u.data');
+
+%%J = distanciaJakar(movies);
+
+%%threshold = 0.4;
+
+%%SimilarUsers = encontrarParesSimilares(J, users, threshold);
+
+%%disp('Pares de utilizadores similares:');
+%%disp(SimilarUsers);
+
+
+
+function hash = createHash(values, a, b, p)
+    array = zeros(1,length(values));
+
+    for i = 1:length(values)
+        array(i) = mod((a*values(i) + b), p);
+    end
+
+    hash = min(array);
+
+end
+
+
+
+
+function minHash = novaDist(k, Set)
+
+    users = length(Set);
+    minHash = zeros(k, users);
+
+    for i = 1:k
+        a = randi(10000);
+        b = randi(10000);
+        x = primes(10000);
+        p = x(randi(length(x)));
+
+        for j = 1:users
+            y = createHash(Set{j},a,b,p);
+            minHash(i,j) = y;
+        end
+    end
+
+end 
+
+function distances = calculateDistances(minHash)
+
+    [k, users] = size(minHash);
+    distances = zeros(users, users); 
+
+    for i = 1:users
+
+        for j = i+1:users
+
+            matches = sum(minHash(:, i) == minHash(:, j));
+            similarity = matches / k;
+            distances(i, j) = 1 - similarity;
+            distances(j, i) = distances(i, j);
+
+        end
+
+    end
+end
+
+
+[movies, users] = conjuntoFilmes('u.data'); 
+
+Nu = length(users);
+%randomUsers = randi(Nu, 1, 100); 
+% moviesSubset = movies(randomUsers); para testr com menos
+
+threshold = 0.4;
+
+k = 50;                         % para as alíneas seguintes é só trocar este k pelos 
+                                % valores pedidos
+J = novaDist(k, movies);        % Subset);  para testar com menos
+
+
+distances = calculateDistances(J);
+
+
+[rows, cols] = find(distances < threshold & distances > 0);
+disp('Pares de usuários com distância inferior ao limiar:');
+for i = 1:length(rows)
+    fprintf('Usuários %d e %d: Distância = %.4f\n', rows(i), cols(i), distances(rows(i), cols(i)));
+end
+
+% a conclusão retirada é que com min hash, isto foi muito mais rápido
+
+
+%% 
+
+function generateMinHashSignatures(filename, k, shingleSize)
+
+
+    fileData = fileread(filename);      
+    lines = strsplit(fileData, '\n');
+    
+    numMovies = length(lines);   % apaguei o espaço em branco no final 
+    shingleSets = cell(numMovies, 1);   
+
+    for i = 1:numMovies
+        lineParts = strsplit(lines{i}, '\t');
+        if ~isempty(lineParts{1})
+            movieName = lineParts{1};
+            shingleSets{i} = generateShingles(movieName, shingleSize);
+        end
+    end
+
+    minHashMatrix = zeros(k, numMovies);
+    for i = 1:k
+        a = randi(10000);
+        b = randi(10000);
+        primeNumbers = primes(10000);
+        p = primeNumbers(randi(length(primeNumbers)));
+
+        for j = 1:numMovies
+            minHashMatrix(i, j) = createHash1(shingleSets{j}, a, b, p);
+        end
+    end
+
+    save('Signatures.mat', 'minHashMatrix', 'lines');
+    disp('Matriz guardada no Signatures.mat');
+end
+
+function shingles = generateShingles(text, shingleSize)
+    text = regexprep(text, '\s+', ' '); % Remove espaços repetidos
+    shingles = {};
+    for i = 1:(length(text) - shingleSize + 1)
+        shingles{end + 1} = text(i:i + shingleSize - 1);
+    end
+    shingles = unique(shingles); 
+end
+
+function hashValue = createHash1(values, a, b, p)
+
+    array = zeros(1, length(values));
+    for i = 1:length(values)
+
+        valueHash = sum(double(values{i}));
+        array(i) = mod((a * valueHash + b), p);
+    end
+    hashValue = min(array);
+end
+
+
+
+function similarMovies = findSimilarMovies(inputString, k, shingleSize)
+
+    data = load('Signatures.mat');
+    minHashMatrix = data.minHashMatrix;
+    movieNames = data.lines(1:end-1); 
+
+
+    inputShingles = generateShingles(inputString, shingleSize);
+
+
+    userHash = zeros(k, 1);
+    for i = 1:k
+        a = randi(10000);
+        b = randi(10000);
+        primeNumbers = primes(10000);
+        p = primeNumbers(randi(length(primeNumbers)));
+        userHash(i) = createHash1(inputShingles, a, b, p);
+    end
+
+
+    numMovies = size(minHashMatrix, 2);
+    similarities = zeros(numMovies, 1);
+    for i = 1:numMovies
+        matches = sum(minHashMatrix(:, i) == userHash);
+        similarities(i) = matches / k;
+    end
+
+
+    [~, sortedIndices] = sort(similarities, 'descend');
+    similarMovies = movieNames(sortedIndices(1:3));
+end
+
+
+filename = 'film_info.txt';
+k = 100; % Número de funções hash
+shingleSize = 5; % Tamanho dos shingles
+
+generateMinHashSignatures(filename, k, shingleSize);
+
+inputString = 'Aladdin';                    % para testar
+similarMovies = findSimilarMovies(inputString, k, shingleSize);
+
+disp('Filmes mais similares:');
+disp(similarMovies);
+
+%%  
+
+function hash = createHash2(values, a, b, p)
+
+    numValues = length(values);  
+    array = zeros(1, numValues); 
+
+    for i = 1:numValues
+        value = values{i}; 
+        if isnumeric(value) 
+            array(i) = mod((a * value + b), p);  
+        else
+            % Se o valor não for numérico, convertê-lo para um valor numérico
+            % com sum, usar só value{i} dá erro sabe-se lá porquê 
+            array(i) = mod((a * sum(double(value)) + b), p);
+        end
+    end
+
+    hash = min(array); 
+end
+
+
+
+function userInterests = Interests(filepath)
+
+    fileData = fileread(filepath);
+    lines = strsplit(fileData, '\n');
+    
+
+    numUsers = length(lines);
+    userInterests = cell(numUsers, 1);
+
+    for i = 1:numUsers
+        parts = strsplit(lines{i}, ';');
+        userID = str2double(parts{1});
+        interests = strtrim(parts(4:end)); % Interesses começam da 4ª coluna
+        userInterests{userID} = interests;
+    end
+end
+
+function minHashMatrix = gerarMinHash(userInterests, k)
+
+    numUsers = length(userInterests);
+    minHashMatrix = zeros(k, numUsers);
+
+
+    for i = 1:k
+        a = randi(10000);
+        b = randi(10000);
+        primeNumbers = primes(10000);
+        p = primeNumbers(randi(length(primeNumbers)));
+
+        for j = 1:numUsers
+            minHashMatrix(i, j) = createHash2(userInterests{j}, a, b, p);
+        end
+    end
+end
+
+function distances = calcularDistanciasMinHash(minHashMatrix)
+
+    [k, numUsers] = size(minHashMatrix);
+    distances = zeros(numUsers, numUsers);
+
+    for i = 1:numUsers
+        for j = i+1:numUsers
+            matches = sum(minHashMatrix(:, i) == minHashMatrix(:, j));
+            similarity = matches / k;
+            distances(i, j) = 1 - similarity;
+            distances(j, i) = distances(i, j);
+        end
+    end
+end
+
+function similarUsers = encontrarUtilizadoresSimilares(movieID, udata, distances, users, threshold)
+
+    viewers = unique(udata(udata(:, 2) == movieID, 1));
+    similarUsers = cell(length(viewers), 1);
+
+    for i = 1:length(viewers)
+        viewerIdx = find(users == viewers(i));
+        for j = 1:length(users)
+            if distances(viewerIdx, j) < threshold && ~ismember(users(j), viewers)
+                similarUsers{i} = [similarUsers{i}, users(j)];
+            end
+        end
+    end
+end
+
+function [topUsers, frequencies] = identificarMaisFrequentes(similarUsers)
+
+    allUsers = [];
+    for i = 1:length(similarUsers)
+        allUsers = [allUsers, similarUsers{i}];
+    end
+    
+    [uniqueUsers, ~, idx] = unique(allUsers);
+    counts = zeros(length(uniqueUsers), 1);
+    
+    for i = 1:length(allUsers)
+        counts(idx(i)) = counts(idx(i)) + 1;
+    end
+    
+    [frequencies, sortedIdx] = sort(counts, 'descend');
+    topUsers = uniqueUsers(sortedIdx(1:2));
+end
+
+
+udata = load('u.data'); 
+[movies, users] = conjuntoFilmes('u.data'); 
+userInterests = Interests('users.txt'); 
+
+k = 100; 
+minHashMatrix = gerarMinHash(userInterests, k);
+
+distances = calcularDistanciasMinHash(minHashMatrix);
+
+
+movieID = 50; 
+threshold = 0.9;
+
+
+similarUsers = encontrarUtilizadoresSimilares(movieID, udata, distances, users, threshold);
+
+
+[topUsers, frequencies] = identificarMaisFrequentes(similarUsers);
+
+
+disp('Dois utilizadores mais frequentes:');
+for i = 1:length(topUsers)
+    fprintf('Utilizador %d: Frequência = %d\n', topUsers(i), frequencies(i));
+end

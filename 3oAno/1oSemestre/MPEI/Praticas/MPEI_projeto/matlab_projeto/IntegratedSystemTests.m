@@ -1,0 +1,24 @@
+clear;
+
+bloomFilterSize = 150000; 
+bloomHashCount = 7;  
+datasetFile = 'dataset_no_ips.csv';
+k = 100; % nº MinHashes
+shingleSize = 15;
+
+% Init sistema integrado
+system = IntegratedSystem(bloomFilterSize, bloomHashCount, datasetFile, k, shingleSize);
+
+testURLs = {
+    'http://badmildiou.com/bin/bg_windows.meterpreter.reverse_tcp.exe.'; % unsafe, cortada parte do URL
+    'http://stackoverflow.com/questions/24410280/how-to-get-popup-menu-from-bottom-of-screen'; % URL safe presente no dataset
+    'http://hubpages.com/hub/The-Heterozygote-Advantage-Examples-of-Disease-Causing-Genes-that-Give-Humans-an-Edge'; % URL safe não presente no dataset
+    'http://1-configurazione-supporto-apple.store-contatta.bimabn.com/c/Apple-id/5ce84b36a61db6c72f25e6b28cee8744/'; % URL unsafe presente no dataset
+    'http://www.lucky-punch.net/index.php/lucky-punch-in-bilder/1-lucky-punch-sport/detail/124-img534.html?tmpl=component&phocadownload=1' % URL unsafe que não está no dataset
+};
+
+for i = 1:length(testURLs)
+    disp(['Analisando URL: ', testURLs{i}]);
+    result = system.analyzeURL(testURLs{i});
+    disp(result);
+end
