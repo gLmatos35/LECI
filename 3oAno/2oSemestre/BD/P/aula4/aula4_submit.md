@@ -22,15 +22,15 @@
 
 ### 4. Sistema de Prescrição Eletrónica de Medicamentos 
 
-[SQL DDL File](ex_4_1_4.sql "SQLFileQuestion")
+[SQL DDL File](SQL/Medicamentos.sql "SQLFileQuestion")
 
-![ex_4_1_4 diagram](ex_4_1_4.png "AnImage")
+![ex_4_1_4 diagram](Diagramas/Medicamentos.png "AnImage")
 
 ### 5. Sistema de Gestão de Conferências
 
-[SQL DDL File](ex_4_1_5.sql "SQLFileQuestion")
+[SQL DDL File](SQL/Conferencia.sql "SQLFileQuestion")
 
-![ex_4_1_5 diagram](ex_4_1_5.png "AnImage")
+![ex_4_1_5 diagram](Diagramas/Conferencia.png "AnImage")
 
 ### 6. Sistema de Gestão de ATL
 
