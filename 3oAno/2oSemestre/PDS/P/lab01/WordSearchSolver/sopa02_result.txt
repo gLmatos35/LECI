@@ -1,0 +1,25 @@
+palavras        8      1,7     DownRight
+anterior        8      13,6    DownLeft
+numero          6      11,7    Left
+letras          6      6,6     UpRight
+teste           5      6,3     DownLeft
+dois            4      4,11    UpLeft
+sopa            4      4,15    Up
+mais            4      9,4     Right
+que             3      3,1     Down
+
+_ _ Q _ _ _ _ _ _ _ S _ _ _ _ 
+_ _ U _ _ _ _ _ _ A _ _ _ _ _ 
+_ _ E _ _ T _ _ R _ _ _ _ _ _ 
+_ _ _ _ E _ _ T M A I S _ _ _ 
+_ _ _ S _ _ E _ _ _ _ _ _ _ _ 
+_ _ T _ _ L _ _ _ _ _ _ A _ _ 
+P E _ _ _ O R E M U N N _ _ _ 
+S A _ _ _ _ _ _ _ _ T _ _ _ _ 
+_ I L _ _ _ _ _ _ E _ _ _ _ _ 
+_ _ O A _ _ _ _ R _ _ _ _ _ _ 
+_ _ _ D V _ _ I _ _ _ _ _ _ _ 
+_ _ _ A _ R O _ _ _ _ _ _ _ _ 
+_ _ _ P _ R A _ _ _ _ _ _ _ _ 
+_ _ _ O _ _ _ S _ _ _ _ _ _ _ 
+_ _ _ S _ _ _ _ _ _ _ _ _ _ _ 
