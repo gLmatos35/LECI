@@ -74,3 +74,36 @@
 --GROUP BY t.type, p.pub_id
 
 --m)
+--SELECT t.type, MAX(t.advance) AS max_advance, AVG(t.advance) AS avg_advance
+--FROM titles t
+--GROUP BY t.type
+--HAVING MAX(t.advance) > 1.5 * AVG(t.advance);
+
+--n)
+--SELECT t.title, a.au_fname, a.au_lname,
+--	SUM(t.ytd_sales*t.price*t.royalty/100*ta.royaltyper/100) AS authorEarnings
+--FROM titles t
+--	JOIN titleauthor ta ON t.title_id = ta.title_id
+--	JOIN authors a ON ta.au_id = a.au_id
+--GROUP BY t.title, a.au_fname, a.au_lname
+--ORDER BY t.title;
+
+--o)
+--SELECT t.title, t.ytd_sales, 
+--	ROUND((t.ytd_sales * t.price),3) AS totalRevenue,
+--	ROUND(SUM(t.ytd_sales*t.price*t.royalty/100*ta.royaltyper/100),3) AS authorRevenue, 
+--	ROUND((t.ytd_sales * t.price) - SUM(t.ytd_sales*t.price*t.royalty/100*ta.royaltyper/100),3) AS publisherRevenue
+--FROM titles t
+--	INNER JOIN titleauthor ta ON t.title_id = ta.title_id
+--	INNER JOIN authors a ON ta.au_id = a.au_id
+--GROUP BY t.title, t.ytd_sales, t.price
+--ORDER BY t.title
+
+--p)
+--SELECT t.title, t.ytd_sales, CONCAT(a.au_fname,' ',a.au_lname) AS author, 
+--	ROUND(SUM(t.ytd_sales*t.price*t.royalty/100*ta.royaltyper/100),3) AS authorRevenue,
+--	ROUND((t.ytd_sales * t.price) - SUM(t.ytd_sales*t.price*t.royalty/100),3) AS publisherRevenue
+--FROM titles t
+--	INNER JOIN titleauthor ta ON t.title_id = ta.title_id
+--	INNER JOIN authors a ON ta.au_id = a.au_id
+--GROUP BY t.title, t.ytd_sales, a.au_fname, a.au_lname, t.price;
