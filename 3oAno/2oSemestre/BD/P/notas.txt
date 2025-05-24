@@ -1,0 +1,8 @@
+tracejado a pontos: chave estrangeira
+
+tracejado (dashed): chaves parciais
+
+tracejado continuo de x chaves estrangeiras pode formar uma chave primária (nem sempre tho)
+
+
+quando há um N para 1 é porque há dependencia e deve haver a dupla linh
