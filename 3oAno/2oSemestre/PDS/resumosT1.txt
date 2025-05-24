@@ -1,0 +1,253 @@
+High level design:
+	> Systems / Subsystems
+	
+Mid level design:
+	> Classes
+
+Low level design:
+	> Algorithms & Data Structures
+	
+	
+Importance of Software Design:
+	> Design can be made more systematic and predictable through methods, ..
+
+	
+Importance of Managing Complexity:
+	> Easier to understand and to modify
+	> The larger the program is, the more more pronounced are the consequences of poor design
+
+
+Types of Complexity in Software:
+	> Essential Complexities 		   -	(in the problem)
+	> Accidental/Incidental Complexities -	(artifacts of the solution)
+	
+The purpose of design is to control complexity = (Essential + Accidental)
+
+	- Modularity (subdivide solution into small components)
+	- Abstraction (supress details where unnecessary)
+	- Info Hiding (hide details and complexity behind simple interfaces)
+	- Inheritance (reuse general components to define more specific elem)
+	- Composition (reuse other components to build a new solution)
+	
+Design techniques tend to rely on heuristics and rules-of-thumb rather than repeatable processes
+
+
+Design Process:
+	Understand problem -> model of solution -> search existing solutions -> prototype -> document and review design -> refactor solution
+	
+Desirable Design Characteristics:
+	Minimal complexity, loose coupling, easy maintenance, extensibility, reusability, portability, high fan-in, leanness, stratification, standard techniques
+	
+Design Pattern: reusable solution to a commonly ocurring design problem
+
+########################################################################################################
+########################################################################################################
+########################################################################################################
+
+GRASP - General Responsibility Assignment Software Patterns
+	> Fundamental principles of object design and responsibility
+	e.g:
+		- assign responsibility to a class
+		- minimize dependencies
+		- maximize cohesion and minimize coupling
+		- increase reuse, decrease maintenance
+		- ...
+		
+>> Creator:
+	-> Assign the responsability of creating an instance of class A to a class B
+		B contains/aggregates A
+		B records A
+		B closely uses A
+		B has the initializing data for A
+	
+	-> Promotes low coupling
+	
+>> Information Expert:
+        -> Assign responsibility to the class that has the necessary information to fulfill it
+        -> Ensures encapsulation and data consistency
+        -> Reduces the need for excessive data passing
+
+>> Low Coupling:
+        -> Minimize dependencies between classes
+        -> Makes the system more flexible and maintainable
+        -> Reduces the impact of changes (they are localised)
+        -> Avoid one class to have to know about many others
+        -> Easier to understand and to use
+        
+>> High Cohesion:
+        -> Assign responsibilities in a way that keeps classes focused on a single purpose
+        -> Improves readability and maintainability
+        -> Avoids bloated or overly complex classes
+        
+>> Controller:
+        -> Assigns responsibility for handling system events to a controller class
+        -> The controller represents a use case or a UI handler
+        -> Promotes separation of concerns
+	-> More potential for reuse (classes are independent between each other)
+	
+>> Polymorphism:
+        -> Assign responsibility based on behavior variation across different types
+        -> Uses interfaces or abstract classes to define common behavior
+        -> Supports flexibility and scalability
+
+>> Pure Fabrication:
+        -> Introduce a new class that doesn’t represent a real-world concept to achieve Low Coupling and High Cohesion
+        -> Useful for handling system concerns like logging, persistence, etc.
+
+>> Indirection:
+        -> Assign an intermediate object to mediate between components
+        -> Helps decouple classes and improve flexibility
+
+>> Protected Variations:
+        -> Identify points of change and create a stable interface around them
+        -> Reduces the impact of modifications and enhances extensibility
+
+        Liskov Substitution Principle (LSP):
+        	- For a subclass B of A to be a proper substitute, it must honor A’s contract
+        	- Subtypes must be usable in place of their base types without altering correctness
+        	- Prevents unexpected behavior in polymorphic designs
+
+        Law of Demeter (LoD):
+        	- "Talk only to your immediate friends"—an object should only call methods on:
+        		- Itself
+        		- Its own fields
+        		- Objects created within the method
+        		- Parameters passed to the method
+        	- Reduces coupling and increases modularity
+        	- Prevents excessive dependencies and fragile code
+        
+- - - WHEN IN DOUBT, EVERYTHING PROMOTES REUSABILITY - - -
+
+########################################################################################################
+########################################################################################################
+########################################################################################################
+
+CREATIONAL PATTERNS
+
+Class:
+
+Factory Method
+	-> Defines an interface for creating objects but lets subclasses decide the instantiation.
+	-> Promotes loose coupling by delegating object creation.
+	
+   * o factory method tem o construtor da classe privado e um metodo estatico que retorna um objeto da classe ou uma subclasse (chama o construtor ou retorna o objeto se já criado) [depende da implementaçao e da vontade do utilizador]
+   [fiz em aula P com o exercicio dos recipientes e dos alimentos]
+
+   
+Object:
+
+Abstract Factory
+	-> Provides an interface for creating families of related objects without specifying their concrete classes.
+	-> Ensures consistency among related objects.
+
+   * define um factory method por produto
+
+Builder
+	-> Separates object construction from its representation.
+	-> Useful for creating complex objects step by step. (parse a complex representation)
+
+Singleton
+	-> Ensures that only one instance of a class exists.
+
+   * Construtor privado (ou protegido)
+   * Definir uma referencia estatica [privada] para uma unica classe objeto e um metodo que acesse a esse objeto 
+
+Object Pool
+	-> Maintains a pool of reusable objects instead of creating new ones each time.
+	-> Optimizes resource management, especially for expensive objects.
+
+Prototype
+	-> Creates new objects by copying an existing instance (cloning).
+	-> Useful when object creation is expensive or complex.
+  
+########################################################################################################
+########################################################################################################
+########################################################################################################
+
+
+Structural Patterns
+
+Define how objects and classes are composed to form larger structures while ensuring flexibility and efficiency.
+
+Class:
+
+Adapter:
+	-> Converts one interface into another expected by clients.
+	-> Enables compatibility between otherwise incompatible classes.
+   * o codigo adaptador é isolado das classes existentes
+   * utilizado quando precisamos de fazer duas classes, que não podem ser alteradas, funcionar entre si.
+
+
+Object:
+
+Bridge:
+	-> Separates abstraction from implementation, allowing them to vary independently.
+	-> Useful for scalable and maintainable designs.
+
+Composite:
+	-> Treats individual objects and compositions of objects uniformly.
+	-> Used for hierarchical structures like trees (e.g., file systems, GUI components).
+   * Num ex de Diretorio/File:
+      * Diretorio = Composite
+      * File = Leaf (uma op)
+
+Decorator:
+	-> Dynamically adds behavior to objects without modifying their structure.
+	-> Provides an alternative to subclassing for extending functionality.
+
+Façade:
+	-> Provides a simplified interface to a complex subsystem.
+	-> Reduces dependencies by encapsulating interactions.
+
+Flyweight:
+	-> Optimizes memory usage by sharing common object state across instances.
+	-> Useful for handling large numbers of similar objects efficiently.
+
+Proxy:
+	-> Acts as a substitute or placeholder for another object.
+	-> Controls access, adds security, or manages resource-heavy operations (e.g., lazy loading, caching)
+   * an object representing another object
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
